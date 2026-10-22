@@ -1,0 +1,112 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "width": 850,
+    "height": 540,
+  
+    "projection": {
+      "type": "mercator"
+    },
+  
+    "params": [
+      {
+        "name": "selectedBird",
+        "value": "Swift Parrot",
+        "bind": {
+          "input": "select",
+          "options": [
+            "Swift Parrot",
+            "Regent Honeyeater",
+            "Orange-bellied Parrot"
+          ],
+          "name": "Select a bird: "
+        }
+      }
+    ],
+  
+    "layer": [
+      {
+        "data": {
+          "url": "data/geo/australia_states.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "states"
+          }
+        },
+  
+        "mark": {
+          "type": "geoshape",
+          "fill": "#F0F3EC",
+          "stroke": "#A7B6AA",
+          "strokeWidth": 0.8
+        }
+      },
+  
+      {
+        "data": {
+          "url": "data/processed/chart05_hexagons.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "hexagons"
+          }
+        },
+  
+        "transform": [
+          {
+            "filter": "datum.properties.species === selectedBird"
+          }
+        ],
+  
+        "mark": {
+          "type": "geoshape",
+          "stroke": "white",
+          "strokeWidth": 0.6
+        },
+  
+        "encoding": {
+          "color": {
+            "field": "properties.observations",
+            "type": "quantitative",
+  
+            "scale": {
+              "type": "sqrt",
+              "domain": [0, 1300],
+              "range": [
+                "#D9E9DA",
+                "#176247"
+              ]
+            },
+  
+            "legend": {
+              "title": "Observation records per hexagon",
+              "orient": "bottom",
+              "gradientLength": 270
+            }
+          },
+  
+          "tooltip": [
+            {
+              "field": "properties.species",
+              "type": "nominal",
+              "title": "Bird species"
+            },
+            {
+              "field": "properties.observations",
+              "type": "quantitative",
+              "title": "Observation records",
+              "format": ",d"
+            }
+          ]
+        }
+      }
+    ],
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {
+        "stroke": null
+      }
+    }
+  }
+  

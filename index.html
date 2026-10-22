@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Australia's Vanishing Wildlife</title>
+
+    <!-- Fonts and CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="page">
+
+
+    <!-- INTRODUCTION -->
+    <header class="hero">
+
+        <p class="eyebrow">
+            THE AUSTRALIAN WILDLIFE FIELD GUIDE · 2026
+        </p>
+
+        <div class="hero-layout">
+
+            <div>
+                <p class="label">
+                    AN INTERACTIVE STORY TOLD THROUGH DATA
+                </p>
+
+                <h1>
+                    Australia's
+                    <span>Vanishing Wildlife.</span>
+                </h1>
+
+                <p class="intro">
+                    Australia is home to extraordinary wildlife,
+                    much of it found nowhere else on Earth.
+                    But many native animals now face an uncertain future.
+                </p>
+
+                <p>
+                    Explore which animals are most at risk,
+                    where they are found, and the challenges
+                    facing their protection.
+                </p>
+
+                <p class="small">
+                    FIT3179 Data Visualisation 2 ·
+                    Monash University Malaysia
+                </p>
+            </div>
+
+
+            <aside class="hero-note">
+
+                <img
+                    src="images/bird.jpg"
+                    alt="Australian native bird"
+                    class="hero-image"
+                >
+
+                <p class="small">
+                    AUSTRALIAN WILDLIFE
+                </p>
+
+                <p class="label">
+                    FROM THE FIELD NOTES
+                </p>
+
+                <p class="big-number">625</p>
+
+                <p>
+                    nationally listed threatened animal taxa
+                    across three EPBC conservation categories.
+                </p>
+
+                <hr>
+
+                <p>
+                    <strong>43.4%</strong> of threatened
+                    invertebrate taxa are classified
+                    as Critically Endangered.
+                </p>
+
+                <p class="small">
+                    Source: EPBC threatened species lists,
+                    August 2026.
+                </p>
+
+            </aside>
+
+        </div>
+
+
+        <nav class="chapters" aria-label="Dashboard sections">
+
+            <a href="#crisis">01 / THE CRISIS</a>
+            <a href="#geography">02 / THE GEOGRAPHY</a>
+
+            <span>03 / THE THREATS</span>
+            <span>04 / THE FUTURE</span>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- CHAPTER 1 -->
+    <section id="crisis" class="chapter">
+
+        <p class="label">
+            CHAPTER 01 / THE BIODIVERSITY CRISIS
+        </p>
+
+        <h2>The scale of the problem</h2>
+
+        <p class="chapter-intro">
+            Some animal groups have more threatened taxa
+            than others. But the number of listings is
+            only part of the story. Their level of risk
+            also matters.
+        </p>
+
+
+
+        <!-- CHART 1: MARIMEKKO -->
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 01 / CONSERVATION STATUS
+            </p>
+
+            <h3>
+                Threatened animals do not all face the same risk
+            </h3>
+
+            <p>
+                Wider columns represent more threatened taxa.
+                The coloured sections show the proportion
+                belonging to each conservation status.
+            </p>
+
+            <div id="chart1" class="chart"></div>
+
+            <p class="hint">
+                Hover for exact values. Click an animal group
+                to highlight it and double-click to reset.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                Birds have the most listed threatened taxa
+                (164), but the severity of listings
+                differs across groups.
+            </p>
+
+            <p class="source">
+                Source: EPBC Threatened Species Lists,
+                28 August 2026. Listed taxa can include
+                subspecies.
+            </p>
+
+        </article>
+
+
+
+        <!-- CHART 2: POPULATION TREND -->
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 02 / POPULATION CHANGE
+            </p>
+
+            <h3>
+                A long-term decline in monitored bird populations
+            </h3>
+
+            <p>
+                This index tracks the relative abundance
+                of monitored Australian bird populations
+                between 1985 and 2022.
+            </p>
+
+            <div id="chart2" class="chart"></div>
+
+            <p class="hint">
+                Hover over the points to see the population
+                index and its lower and upper estimates.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                The bird population index fell from
+                100 in 1985 to approximately 44.2 in 2022,
+                a decline of around 55.8%.
+            </p>
+
+            <p class="source">
+                Source: Threatened Species Index (TSX 2025),
+                Birds export. This is an index of monitored
+                populations, not a census of all Australian birds.
+                The sample includes near-threatened taxa.
+            </p>
+
+        </article>
+
+
+
+        <!-- CHART 3: ISOTYPE -->
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 03 / CRITICAL RISK
+            </p>
+
+            <h3>
+                How does critical risk compare between animal groups?
+            </h3>
+
+            <p>
+                Each animal group contains 100 dots.
+                Dark purple dots show the approximate
+                percentage of its threatened taxa classified
+                as Critically Endangered.
+            </p>
+
+            <div id="chart3" class="chart"></div>
+
+            <p class="hint">
+                Each dot represents approximately 1%.
+                Hover to see the exact values.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                43.4% of threatened invertebrate taxa are
+                Critically Endangered, compared with
+                approximately 8.0% of mammals.
+            </p>
+
+            <p class="source">
+                Source: EPBC Threatened Species Lists,
+                28 August 2026. Percentages are calculated
+                within each threatened animal group.
+            </p>
+
+        </article>
+
+    </section>
+
+
+
+    <!-- WILDLIFE PHOTOGRAPHS -->
+    <section class="wildlife">
+
+        <p class="label">
+            BEYOND THE NUMBERS
+        </p>
+
+        <h2>Meet the wildlife behind the data</h2>
+
+        <p>
+            These animals help us understand what is at
+            stake when we talk about biodiversity loss.
+        </p>
+
+
+        <div class="wildlife-grid">
+
+            <!-- Bird card -->
+            <article class="wildlife-card">
+
+                <img
+                    src="images/birdd.jpeg"
+                    alt="Australian native bird"
+                    loading="lazy"
+                >
+
+                <div class="wildlife-text">
+
+                    <p class="label">
+                        WILDLIFE NOTE / 01
+                    </p>
+
+                    <h3>Birdlife under pressure</h3>
+
+                    <p>
+                        Australia's birds play important roles
+                        in pollination, seed dispersal
+                        and insect control.
+                    </p>
+
+                    <p class="fact">
+                        <b>Did you know?</b>
+                        Our EPBC dataset includes 164
+                        threatened bird taxa, including
+                        18 that are Critically Endangered.
+                    </p>
+
+                    <p class="source">
+                        Photo attribution to be confirmed.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Koala card -->
+            <article class="wildlife-card">
+
+                <img
+                    src="images/images.jpeg"
+                    alt="Koala resting in a tree"
+                    loading="lazy"
+                >
+
+                <div class="wildlife-text">
+
+                    <p class="label">
+                        WILDLIFE NOTE / 02
+                    </p>
+
+                    <h3>Life among the eucalyptus</h3>
+
+                    <p>
+                        Koalas depend on suitable eucalyptus
+                        habitat for food and shelter.
+                    </p>
+
+                    <p class="fact">
+                        <b>Did you know?</b>
+                        Koalas have specialised digestive
+                        systems that help them break down
+                        fibrous eucalyptus leaves.
+                    </p>
+
+                    <p class="source">
+                        Photo attribution to be confirmed.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CHAPTER 2 -->
+    <section id="geography" class="chapter">
+
+        <p class="label">
+            CHAPTER 02 / THE GEOGRAPHY
+        </p>
+
+        <h2>A geography of vulnerability</h2>
+
+        <p class="chapter-intro">
+            Threatened wildlife occurs across Australia's
+            forests, wetlands, deserts and coastlines.
+            These maps explore how threatened-taxon
+            listings and wildlife observations vary
+            across the country.
+        </p>
+
+
+
+        <!-- CHART 4: AREA-NORMALISED CHOROPLETH -->
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 04 / AREA-NORMALISED GEOGRAPHY
+            </p>
+
+            <h3>
+                Where are threatened taxa most concentrated
+                relative to land area?
+            </h3>
+
+            <p>
+                This map compares the number of nationally
+                listed threatened animal taxa per 100,000 km²
+                of state or territory land area.
+
+                Darker colours represent higher
+                area-normalised values.
+            </p>
+
+            <div id="chart4" class="chart"></div>
+
+            <p class="hint">
+                Hover over each state to see its original
+                count, land area and normalised value.
+
+                The colour legend uses a logarithmic
+                scale because the ACT is much smaller
+                than the other jurisdictions.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                Tasmania has approximately 163.7
+                listed threatened taxa per 100,000 km²,
+                much higher than many mainland states.
+
+                The ACT has an especially large ratio
+                because its land area is very small.
+                This does not directly measure animal
+                abundance or conservation risk.
+            </p>
+
+            <p class="source">
+                Sources: EPBC Threatened Species Lists
+                (2026), Geoscience Australia land-area
+                figures, and ABS state boundaries (2021).
+                Taxa can occur in multiple states.
+            </p>
+
+        </article>
+
+
+
+        <!-- CHART 5: HEXBIN MAP -->
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 05 / BIRD OBSERVATION HOTSPOTS
+            </p>
+
+            <h3>
+                Where have Australia's threatened birds
+                been observed?
+            </h3>
+
+            <p>
+                This map shows recorded observations of
+                three threatened Australian bird species
+                between 2015 and 2025.
+
+                Each hexagon covers a similar geographic
+                area. Darker hexagons represent more
+                recorded observations.
+            </p>
+
+            <!-- Chart 5 will load here -->
+            <div id="chart5" class="chart"></div>
+
+            <p class="hint">
+                Choose a bird species using the dropdown.
+                Hover over a hexagon to see the number
+                of observation records.
+
+                Hexagons are approximately 50 km
+                across from corner to corner.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                The Swift Parrot has more observation
+                records in this dataset than the
+                other two bird species.
+
+                However, more observations do not
+                necessarily mean more birds.
+                Survey effort and repeated sightings
+                can affect the results.
+            </p>
+
+            <p class="source">
+                Source: GBIF occurrence records,
+                Australia, 2015–2025.
+
+                Records were filtered for presence,
+                available coordinates and no flagged
+                geospatial issues.
+
+                GBIF download DOIs will be added
+                before final submission.
+            </p>
+
+        </article>
+
+<!-- Chart 6: Protected areas proportional symbol map -->
+<article class="chart-section">
+
+    <p class="label">
+        FIGURE 06 / PROTECTED AREAS
+    </p>
+
+    <h3>
+        How much of Australia's land is protected?
+    </h3>
+
+    <p>
+        Protected areas play an important role in
+        conserving Australia's biodiversity.
+
+        This map compares the total protected land
+        area across Australia's states and territories
+        using CAPAD 2024 data.
+
+        Larger circles represent more protected land,
+        while darker circles show a higher percentage
+        of land protected within each jurisdiction.
+    </p>
+
+    <!-- Interactive Map 6 -->
+    <div id="chart6" class="chart"></div>
+
+    <p class="hint">
+        Hover over a circle to see the protected area
+        in square kilometres and the percentage of
+        land protected.
+
+        Each circle represents the whole state or
+        territory and does not show the exact location
+        of individual protected areas.
+    </p>
+
+    <p class="finding">
+        <b>What stands out:</b>
+        Western Australia has the largest total
+        protected land area, at approximately
+        786,742 km².
+
+        However, Tasmania has a greater proportion
+        of its land protected, at 42.8%, compared
+        with Western Australia's 31.1%.
+
+        This shows why both the total protected area
+        and percentage of land protected are useful
+        when comparing jurisdictions.
+    </p>
+
+    <p class="source">
+        Source:
+        <a href="https://www.dcceew.gov.au/environment/land/nrs/science/capad/2024"
+           target="_blank">
+            Australian Government, CAPAD 2024
+        </a>,
+        terrestrial protected-area statistics
+        by jurisdiction.
+
+        Map boundaries: Australian Bureau of
+        Statistics, 2021.
+    </p>
+
+</article>
+
+
+<!-- Chart 7: Bushfire footprint map -->
+<article class="chart-section">
+
+    <p class="label">
+        FIGURE 07 / THE BUSHFIRE FOOTPRINT
+    </p>
+
+    <h3>
+        Where did larger bushfires affect
+        southeastern Australia?
+    </h3>
+
+    <p>
+        The 2019–20 bushfire season placed enormous
+        pressure on Australian ecosystems.
+
+        This map highlights selected larger mapped
+        fire footprints in New South Wales and Victoria
+        during the 2019–20 financial year.
+
+        Orange areas represent simplified fire
+        boundaries, not fire severity.
+    </p>
+
+    <!-- Interactive fire footprint map -->
+    <div id="chart7" class="chart"></div>
+
+    <p class="hint">
+        Use the dropdown to view both states or
+        select NSW or Victoria individually.
+
+        Hover over the orange areas for details.
+    </p>
+
+    <p class="finding">
+        <b>What stands out:</b>
+        Many larger mapped fire footprints occur
+        along the eastern and southeastern regions
+        of NSW and Victoria.
+
+        These landscapes support important wildlife
+        habitats, making bushfire exposure a concern
+        for biodiversity conservation.
+    </p>
+
+    <p class="source">
+        Source:
+        <a href="https://data.gov.au/data/dataset/f91c2ffd-a0a0-4042-a8ac-71757a6ef727"
+           target="_blank">
+            Australian Government,
+            2019–20 Financial Year Bushfire Boundaries
+        </a>.
+
+        Selected NSW and Victoria polygons only.
+        Smaller source polygons were excluded,
+        and the remaining coverage was merged
+        and approximated using a 3 km grid.
+
+        The map does not represent every fire
+        or the severity of burning.
+    </p>
+
+</article>
+
+
+
+    </section>
+
+
+<!-- CHAPTER 3: THREATS -->
+<section id="threats" class="chapter">
+
+    <p class="label">
+        CHAPTER 03 / THE THREATS
+    </p>
+
+    <h2>What is putting wildlife at risk?</h2>
+
+    <p class="chapter-intro">
+        Australia's threatened animals face more than
+        one kind of danger. Habitat changes, invasive
+        species, fires and climate pressures affect
+        different animal groups in different ways.
+    </p>
+
+    <!-- CHART 8: THREAT HEATMAP -->
+    <article class="chart-section">
+
+        <p class="label">
+            FIGURE 08 / THREATS BY ANIMAL GROUP
+        </p>
+
+        <h3>
+            Which threats affect each animal group most?
+        </h3>
+
+        <p>
+            This heatmap compares eight major threats
+            across six animal groups.
+
+            Each cell shows the percentage of assessed
+            taxa within that group affected by a
+            particular threat. Darker cells indicate
+            higher percentages.
+        </p>
+
+        <div id="chart8" class="chart"></div>
+
+        <p class="hint">
+            Hover over each cell to see the number
+            of affected taxa and the total assessed.
+
+            A taxon can face multiple threats, so
+            the percentages do not add up to 100%.
+        </p>
+
+        <p class="finding">
+            <b>What stands out:</b>
+            Invasive species and diseases affect
+            80.4% of the assessed mammal taxa.
+
+            Habitat loss is recorded for 74.5%
+            of assessed fish taxa, while changed
+            water regimes affect 62.7%.
+
+            The pattern of threats is different
+            across animal groups.
+        </p>
+
+        <p class="source">
+            Source:
+            <a href="https://doi.org/10.1002/ece3.7920"
+               target="_blank">
+                Ward et al. (2021)
+            </a>,
+            A national-scale dataset for threats
+            impacting Australia's imperilled
+            flora and fauna.
+
+            Data reflect the study's earlier
+            threat assessments, including
+            EPBC status information from 2018.
+
+            Only fauna were included.
+            Percentages use the number of
+            assessed taxa within each animal group.
+        </p>
+
+    </article>
+
+    <!-- Charts 9 and 10 will be added here -->
+
+</section>
+
+
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>Australia's Vanishing Wildlife</h3>
+
+        <p>
+            FIT3179 Data Visualisation 2 ·
+            Monash University Malaysia
+        </p>
+
+        <p class="small">
+            Working version · October 2026
+        </p>
+
+    </footer>
+
+</main>
+
+
+<!-- Libraries needed to display Vega-Lite charts -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<!-- Loads Charts 1 to 5 -->
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+animal_group,conservation_status,taxa_count,group_total,pct_within_group,x0,x1,y0,y1,xcenter
+Birds,Vulnerable,76,164,46.34,0,0.2624,0,0.46341463,0.1312
+Birds,Endangered,70,164,42.68,0,0.2624,0.46341463,0.8902439,0.1312
+Birds,Critically Endangered,18,164,10.98,0,0.2624,0.8902439,1.0,0.1312
+Mammals,Vulnerable,57,113,50.44,0.2624,0.4432,0,0.50442478,0.3528
+Mammals,Endangered,47,113,41.59,0.2624,0.4432,0.50442478,0.92035398,0.3528
+Mammals,Critically Endangered,9,113,7.96,0.2624,0.4432,0.92035398,1.0,0.3528
+Reptiles,Vulnerable,34,103,33.01,0.4432,0.608,0,0.33009709,0.5256
+Reptiles,Endangered,42,103,40.78,0.4432,0.608,0.33009709,0.73786408,0.5256
+Reptiles,Critically Endangered,27,103,26.21,0.4432,0.608,0.73786408,1.0,0.5256
+Amphibians,Vulnerable,16,49,32.65,0.608,0.6864,0,0.32653061,0.6472
+Amphibians,Endangered,15,49,30.61,0.608,0.6864,0.32653061,0.63265306,0.6472
+Amphibians,Critically Endangered,18,49,36.73,0.608,0.6864,0.63265306,1.0,0.6472
+Fish,Vulnerable,22,83,26.51,0.6864,0.8192,0,0.26506024,0.7528
+Fish,Endangered,33,83,39.76,0.6864,0.8192,0.26506024,0.6626506,0.7528
+Fish,Critically Endangered,28,83,33.73,0.6864,0.8192,0.6626506,1.0,0.7528
+Invertebrates,Vulnerable,16,113,14.16,0.8192,1.0,0,0.14159292,0.9096
+Invertebrates,Endangered,48,113,42.48,0.8192,1.0,0.14159292,0.56637168,0.9096
+Invertebrates,Critically Endangered,49,113,43.36,0.8192,1.0,0.56637168,1.0,0.9096

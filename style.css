@@ -1,0 +1,340 @@
+
+/* Main colours */
+
+:root {
+    --cream: #F1EFE6;
+    --green: #263D36;
+    --orange: #B45F45;
+    --light-green: #E7EDE6;
+    --grey: #66776B;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--green);
+    font-family: "Source Sans 3", Arial, sans-serif;
+    background-color: var(--cream);
+
+    /* Light topographic pattern */
+    background-image: repeating-radial-gradient(
+        circle at -8% 40%,
+        transparent 0 85px,
+        rgba(38, 61, 54, 0.018) 86px,
+        transparent 87px 145px
+    );
+}
+
+h1, h2, h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 39px;
+    margin: 8px 0 14px;
+}
+
+h3 {
+    font-size: 25px;
+    margin: 8px 0 12px;
+}
+
+p {
+    line-height: 1.65;
+}
+
+.page {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 34px;
+}
+
+.label {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+}
+
+.small, .source {
+    font-size: 12px;
+    color: var(--grey);
+}
+
+
+/* Introduction */
+
+.hero {
+    background: #FBFAF5;
+    padding: 38px 45px 25px;
+    margin-top: 30px;
+    border: 1px solid #DADCD2;
+    border-left: 5px solid var(--orange);
+    border-radius: 7px;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 45px;
+    align-items: center;
+    padding: 30px 0;
+}
+
+h1 {
+    font-size: clamp(45px, 5vw, 70px);
+    line-height: 1.12;
+    margin: 15px 0 26px;
+}
+
+h1 span {
+    display: block;
+    color: var(--orange);
+}
+
+.intro {
+    font-size: 18px;
+}
+
+.hero-note {
+    background: var(--light-green);
+    padding: 22px;
+    border-radius: 8px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.big-number {
+    font: 65px "Fraunces", Georgia, serif;
+    margin: 5px 0;
+}
+
+.hero-note strong {
+    color: var(--orange);
+    font-size: 20px;
+}
+
+.hero-note hr {
+    border: 0;
+    border-top: 1px solid #CAD3C9;
+}
+
+.chapters {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid #DADCD2;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.chapters a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.chapters a:hover {
+    color: var(--orange);
+}
+
+.chapters span {
+    color: #A0A9A0;
+}
+
+
+/* Charts */
+
+.chapter {
+    padding-top: 75px;
+}
+
+.chapter-intro {
+    max-width: 790px;
+    font-size: 17px;
+    margin-bottom: 38px;
+}
+
+.chart-section {
+    border-top: 1px solid #D5D9CF;
+    padding: 30px 0 40px;
+}
+
+.chart-section > p:not(.label) {
+    max-width: 880px;
+}
+
+.chart {
+    background: white;
+    border: 1px solid #DEE5DF;
+    padding: 24px;
+    border-radius: 10px;
+    margin: 24px 0 16px;
+    min-width: 0;
+}
+
+.chart .vega-embed {
+    width: 100%;
+}
+
+.chart svg {
+    max-width: 100%;
+}
+
+.hint {
+    color: var(--grey);
+    font-size: 13px;
+}
+
+.finding {
+    background: var(--light-green);
+    border-left: 3px solid #728F7E;
+    padding: 18px 22px;
+}
+
+.source {
+    border-top: 1px solid #DADCD2;
+    padding-top: 14px;
+}
+
+
+/* Wildlife photographs */
+
+.wildlife {
+    padding: 55px 0 15px;
+    border-top: 1px solid #DADCD2;
+}
+
+.wildlife-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.wildlife-card {
+    background: white;
+    border: 1px solid #DFE5DD;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.wildlife-card img {
+    display: block;
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+}
+
+.wildlife-text {
+    padding: 23px;
+}
+
+.fact {
+    background: #F5F3EB;
+    border-left: 3px solid var(--orange);
+    padding: 16px;
+}
+
+.fact b {
+    color: var(--orange);
+}
+
+
+/* Footer */
+
+footer {
+    margin: 65px 0;
+    padding-top: 30px;
+    border-top: 1px solid #D5D9CF;
+}
+
+
+/* Smaller screens */
+
+@media (max-width: 800px) {
+
+    .page {
+        padding: 0 16px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero-layout,
+    .wildlife-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-layout {
+        gap: 22px;
+    }
+
+    .chart {
+        padding: 12px;
+        overflow-x: auto;
+    }
+
+    h1 {
+        font-size: 44px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+}
+
+/* Keep chart containers wide */
+
+.chart {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto;
+}
+
+.chart svg {
+    max-width: none;
+}
+
+/* Make chart boxes fit the visualisations */
+
+.chart {
+    width: fit-content !important;
+    max-width: 100%;
+    margin: 24px auto 16px;
+    padding: 18px 20px;
+    overflow-x: auto;
+}
+
+.chart .vega-embed {
+    display: inline-block;
+    width: max-content !important;
+    max-width: none;
+}
+
+.chart svg {
+    max-width: none;
+}
+
+/* Keep charts usable on small screens */
+
+@media (max-width: 800px) {
+    .chart {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,9 @@
+state_code,state_abbr,state_name,listed_taxa,area_km2,taxa_per_area
+1,NSW,New South Wales,257,801150,32.08
+2,VIC,Victoria,168,227444,73.86
+3,QLD,Queensland,241,1729742,13.93
+4,SA,South Australia,162,984321,16.46
+5,WA,Western Australia,170,2527013,6.73
+6,TAS,Tasmania,112,68401,163.74
+7,NT,Northern Territory,103,1347791,7.64
+8,ACT,Australian Capital Territory,52,2358,2205.26

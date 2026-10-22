@@ -1,0 +1,155 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "data": {
+      "url": "data/processed/chart01_mosaic.csv"
+    },
+  
+    "width": 850,
+    "height": 340,
+  
+    "layer": [
+      {
+        "params": [
+          {
+            "name": "selectedGroup",
+            "select": {
+              "type": "point",
+              "fields": ["animal_group"],
+              "on": "click",
+              "clear": "dblclick"
+            }
+          }
+        ],
+  
+        "mark": {
+          "type": "rect",
+          "stroke": "white",
+          "strokeWidth": 2
+        },
+  
+        "encoding": {
+          "x": {
+            "field": "x0",
+            "type": "quantitative",
+            "scale": {"domain": [0, 1]},
+            "axis": null
+          },
+  
+          "x2": {"field": "x1"},
+  
+          "y": {
+            "field": "y0",
+            "type": "quantitative",
+            "scale": {"domain": [0, 1]},
+            "axis": {
+              "title": "Share within group",
+              "format": ".0%"
+            }
+          },
+  
+          "y2": {"field": "y1"},
+  
+          "color": {
+            "field": "conservation_status",
+            "type": "nominal",
+  
+            "scale": {
+              "domain": [
+                "Vulnerable",
+                "Endangered",
+                "Critically Endangered"
+              ],
+              "range": [
+                "#D9A24B",
+                "#CB6651",
+                "#713648"
+              ]
+            },
+  
+            "legend": {
+              "title": "Conservation status",
+              "orient": "top"
+            }
+          },
+  
+          "opacity": {
+            "condition": {
+              "param": "selectedGroup",
+              "value": 1
+            },
+            "value": 0.25
+          },
+  
+          "tooltip": [
+            {
+              "field": "animal_group",
+              "title": "Animal group"
+            },
+            {
+              "field": "conservation_status",
+              "title": "Status"
+            },
+            {
+              "field": "taxa_count",
+              "type": "quantitative",
+              "title": "Listed taxa"
+            },
+            {
+              "field": "pct_within_group",
+              "type": "quantitative",
+              "title": "Percentage (%)",
+              "format": ".1f"
+            }
+          ]
+        }
+      },
+  
+      {
+        "transform": [
+          {
+            "filter": "datum.conservation_status === 'Vulnerable'"
+          },
+          {
+            "calculate": "datum.animal_group === 'Amphibians' ? 'Amphib.' : datum.animal_group === 'Invertebrates' ? 'Invert.' : datum.animal_group",
+            "as": "short_name"
+          }
+        ],
+  
+        "mark": {
+          "type": "text",
+          "fontSize": 11,
+          "fontWeight": "bold",
+          "color": "#263D36",
+          "dy": 14,
+          "baseline": "top"
+        },
+  
+        "encoding": {
+          "x": {
+            "field": "xcenter",
+            "type": "quantitative",
+            "scale": {"domain": [0, 1]},
+            "axis": null
+          },
+  
+          "y": {
+            "datum": 0,
+            "type": "quantitative",
+            "axis": null
+          },
+  
+          "text": {
+            "field": "short_name"
+          }
+        }
+      }
+    ],
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {"stroke": null}
+    }
+  }
+  

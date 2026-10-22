@@ -1,0 +1,118 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "data": {
+      "url": "data/processed/tsx_birds.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "index": "number",
+          "low_index": "number",
+          "high_index": "number"
+        }
+      }
+    },
+  
+    "width": 850,
+    "height": 340,
+  
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "color": "#B7D8CB",
+          "opacity": 0.5
+        },
+  
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "axis": {
+              "title": "Year",
+              "format": "d"
+            }
+          },
+  
+          "y": {
+            "field": "low_index",
+            "type": "quantitative",
+            "scale": {"zero": true},
+            "axis": {
+              "title": "Bird population index (1985 = 100)"
+            }
+          },
+  
+          "y2": {
+            "field": "high_index"
+          }
+        }
+      },
+  
+      {
+        "mark": {
+          "type": "line",
+          "color": "#176B60",
+          "strokeWidth": 3,
+          "point": {
+            "filled": true,
+            "size": 35
+          }
+        },
+  
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "axis": {
+              "title": "Year",
+              "format": "d"
+            }
+          },
+  
+          "y": {
+            "field": "index",
+            "type": "quantitative",
+            "axis": {
+              "title": "Bird population index (1985 = 100)"
+            }
+          },
+  
+          "tooltip": [
+            {
+              "field": "year",
+              "type": "quantitative",
+              "title": "Year",
+              "format": "d"
+            },
+            {
+              "field": "index",
+              "type": "quantitative",
+              "title": "Population index",
+              "format": ".1f"
+            },
+            {
+              "field": "low_index",
+              "type": "quantitative",
+              "title": "Lower estimate",
+              "format": ".1f"
+            },
+            {
+              "field": "high_index",
+              "type": "quantitative",
+              "title": "Upper estimate",
+              "format": ".1f"
+            }
+          ]
+        }
+      }
+    ],
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {"stroke": null}
+    }
+  }
+  

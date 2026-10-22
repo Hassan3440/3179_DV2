@@ -1,0 +1,96 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "data": {
+      "url": "data/processed/chart03_isotype.csv"
+    },
+  
+    "facet": {
+      "field": "animal_group",
+      "type": "nominal",
+  
+      "sort": [
+        "Birds",
+        "Mammals",
+        "Reptiles",
+        "Amphibians",
+        "Fish",
+        "Invertebrates"
+      ],
+  
+      "header": {
+        "title": null,
+        "labelFontSize": 14,
+        "labelColor": "#263D36"
+      }
+    },
+  
+    "columns": 3,
+    "spacing": 24,
+  
+    "spec": {
+      "width": 210,
+      "height": 165,
+  
+      "mark": {
+        "type": "circle",
+        "size": 120
+      },
+  
+      "encoding": {
+        "x": {
+          "field": "dot_col",
+          "type": "quantitative",
+          "scale": {"domain": [0, 11]},
+          "axis": null
+        },
+  
+        "y": {
+          "field": "dot_row",
+          "type": "quantitative",
+          "scale": {"domain": [0, 11]},
+          "axis": null
+        },
+  
+        "color": {
+          "condition": {
+            "test": "datum.dot_status === 'Critical' || datum.dot_status === 'Critically Endangered'",
+            "value": "#713648"
+          },
+          "value": "#DFE7E0"
+        },
+  
+        "tooltip": [
+          {
+            "field": "animal_group",
+            "title": "Animal group"
+          },
+          {
+            "field": "critical_count",
+            "type": "quantitative",
+            "title": "Critically Endangered"
+          },
+          {
+            "field": "group_total",
+            "type": "quantitative",
+            "title": "Total threatened"
+          },
+          {
+            "field": "critical_pct",
+            "type": "quantitative",
+            "title": "Percentage (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {
+        "stroke": null
+      }
+    }
+  }
+  

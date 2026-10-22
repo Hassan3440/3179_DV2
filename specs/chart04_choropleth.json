@@ -1,0 +1,121 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "data": {
+    "url": "data/geo/australia_states.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "states"
+    }
+  },
+
+  "width": 850,
+  "height": 540,
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "fill": "#DFE6DF",
+        "stroke": "white",
+        "strokeWidth": 1
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "lookup": "properties.STE_CODE21",
+          "from": {
+            "data": {
+              "url": "data/processed/chart04_state_counts.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "state_code": "string",
+                  "listed_taxa": "number",
+                  "area_km2": "number",
+                  "taxa_per_area": "number"
+                }
+              }
+            },
+            "key": "state_code",
+            "fields": [
+              "state_name",
+              "listed_taxa",
+              "area_km2",
+              "taxa_per_area"
+            ]
+          }
+        },
+
+        {
+          "filter": "isValid(datum.taxa_per_area)"
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "color": {
+          "field": "taxa_per_area",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [6, 2300],
+            "range": [
+              "#E7F0E7",
+              "#174B3A"
+            ]
+          },
+          "legend": {
+            "title": "Taxa per 100,000 km²",
+            "orient": "bottom",
+            "gradientLength": 300
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "state_name",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "listed_taxa",
+            "type": "quantitative",
+            "title": "Threatened taxa"
+          },
+          {
+            "field": "area_km2",
+            "type": "quantitative",
+            "title": "Land area (km²)",
+            "format": ",.0f"
+          },
+          {
+            "field": "taxa_per_area",
+            "type": "quantitative",
+            "title": "Taxa per 100,000 km²",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    }
+  }
+}

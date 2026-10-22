@@ -1,0 +1,19 @@
+animal_group,conservation_status,taxa_count,group_total,percentage_within_group
+Birds,Vulnerable,76,164,46.34
+Birds,Endangered,70,164,42.68
+Birds,Critically Endangered,18,164,10.98
+Mammals,Vulnerable,57,113,50.44
+Mammals,Endangered,47,113,41.59
+Mammals,Critically Endangered,9,113,7.96
+Reptiles,Vulnerable,34,103,33.01
+Reptiles,Endangered,42,103,40.78
+Reptiles,Critically Endangered,27,103,26.21
+Amphibians,Vulnerable,16,49,32.65
+Amphibians,Endangered,15,49,30.61
+Amphibians,Critically Endangered,18,49,36.73
+Fish,Vulnerable,22,83,26.51
+Fish,Endangered,33,83,39.76
+Fish,Critically Endangered,28,83,33.73
+Invertebrates,Vulnerable,16,113,14.16
+Invertebrates,Endangered,48,113,42.48
+Invertebrates,Critically Endangered,49,113,43.36

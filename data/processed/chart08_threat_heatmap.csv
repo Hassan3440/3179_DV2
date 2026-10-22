@@ -1,0 +1,49 @@
+group,threat,original_threat,affected_taxa,assessed_taxa,percent,label
+Birds,Habitat loss,"Habitat loss, fragmentation and degradation",83,135,61.5,61.5%
+Birds,Invasives & disease,Invasive species and diseases,96,135,71.1,71.1%
+Birds,Fire regimes,Adverse fire regimes,60,135,44.4,44.4%
+Birds,Climate & weather,Climate change and severe weather,72,135,53.3,53.3%
+Birds,Water changes,Changed surface and groundwater regimes,10,135,7.4,7.4%
+Birds,Ecosystem disruption,Disrupted ecosystem and population processes,33,135,24.4,24.4%
+Birds,Direct human harm,Overexploitation and other direct harm from human activities,61,135,45.2,45.2%
+Birds,Pollution,Pollution,25,135,18.5,18.5%
+Mammals,Habitat loss,"Habitat loss, fragmentation and degradation",56,107,52.3,52.3%
+Mammals,Invasives & disease,Invasive species and diseases,86,107,80.4,80.4%
+Mammals,Fire regimes,Adverse fire regimes,61,107,57.0,57.0%
+Mammals,Climate & weather,Climate change and severe weather,28,107,26.2,26.2%
+Mammals,Water changes,Changed surface and groundwater regimes,2,107,1.9,1.9%
+Mammals,Ecosystem disruption,Disrupted ecosystem and population processes,10,107,9.3,9.3%
+Mammals,Direct human harm,Overexploitation and other direct harm from human activities,19,107,17.8,17.8%
+Mammals,Pollution,Pollution,5,107,4.7,4.7%
+Reptiles,Habitat loss,"Habitat loss, fragmentation and degradation",41,61,67.2,67.2%
+Reptiles,Invasives & disease,Invasive species and diseases,40,61,65.6,65.6%
+Reptiles,Fire regimes,Adverse fire regimes,20,61,32.8,32.8%
+Reptiles,Climate & weather,Climate change and severe weather,13,61,21.3,21.3%
+Reptiles,Water changes,Changed surface and groundwater regimes,4,61,6.6,6.6%
+Reptiles,Ecosystem disruption,Disrupted ecosystem and population processes,1,61,1.6,1.6%
+Reptiles,Direct human harm,Overexploitation and other direct harm from human activities,21,61,34.4,34.4%
+Reptiles,Pollution,Pollution,14,61,23.0,23.0%
+Frogs,Habitat loss,"Habitat loss, fragmentation and degradation",24,37,64.9,64.9%
+Frogs,Invasives & disease,Invasive species and diseases,25,37,67.6,67.6%
+Frogs,Fire regimes,Adverse fire regimes,15,37,40.5,40.5%
+Frogs,Climate & weather,Climate change and severe weather,22,37,59.5,59.5%
+Frogs,Water changes,Changed surface and groundwater regimes,7,37,18.9,18.9%
+Frogs,Ecosystem disruption,Disrupted ecosystem and population processes,0,37,0.0,0.0%
+Frogs,Direct human harm,Overexploitation and other direct harm from human activities,5,37,13.5,13.5%
+Frogs,Pollution,Pollution,0,37,0.0,0.0%
+Fish,Habitat loss,"Habitat loss, fragmentation and degradation",38,51,74.5,74.5%
+Fish,Invasives & disease,Invasive species and diseases,36,51,70.6,70.6%
+Fish,Fire regimes,Adverse fire regimes,4,51,7.8,7.8%
+Fish,Climate & weather,Climate change and severe weather,29,51,56.9,56.9%
+Fish,Water changes,Changed surface and groundwater regimes,32,51,62.7,62.7%
+Fish,Ecosystem disruption,Disrupted ecosystem and population processes,10,51,19.6,19.6%
+Fish,Direct human harm,Overexploitation and other direct harm from human activities,22,51,43.1,43.1%
+Fish,Pollution,Pollution,15,51,29.4,29.4%
+Invertebrates,Habitat loss,"Habitat loss, fragmentation and degradation",43,65,66.2,66.2%
+Invertebrates,Invasives & disease,Invasive species and diseases,39,65,60.0,60.0%
+Invertebrates,Fire regimes,Adverse fire regimes,33,65,50.8,50.8%
+Invertebrates,Climate & weather,Climate change and severe weather,22,65,33.8,33.8%
+Invertebrates,Water changes,Changed surface and groundwater regimes,9,65,13.8,13.8%
+Invertebrates,Ecosystem disruption,Disrupted ecosystem and population processes,0,65,0.0,0.0%
+Invertebrates,Direct human harm,Overexploitation and other direct harm from human activities,5,65,7.7,7.7%
+Invertebrates,Pollution,Pollution,6,65,9.2,9.2%

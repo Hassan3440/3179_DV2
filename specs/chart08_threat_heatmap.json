@@ -1,0 +1,141 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "width": 820,
+    "height": 330,
+  
+    "data": {
+      "url": "data/processed/chart08_threat_heatmap.csv"
+    },
+  
+    "encoding": {
+      "x": {
+        "field": "threat",
+        "type": "nominal",
+        "sort": [
+          "Habitat loss",
+          "Invasives & disease",
+          "Fire regimes",
+          "Climate & weather",
+          "Water changes",
+          "Ecosystem disruption",
+          "Direct human harm",
+          "Pollution"
+        ],
+        "axis": {
+          "title": null,
+          "labelAngle": -33,
+          "labelFontSize": 12,
+          "labelLimit": 140,
+          "labelPadding": 9
+        }
+      },
+  
+      "y": {
+        "field": "group",
+        "type": "nominal",
+        "sort": [
+          "Birds",
+          "Mammals",
+          "Reptiles",
+          "Frogs",
+          "Fish",
+          "Invertebrates"
+        ],
+        "axis": {
+          "title": null,
+          "labelFontSize": 13,
+          "labelPadding": 9
+        }
+      },
+  
+      "tooltip": [
+        {
+          "field": "group",
+          "type": "nominal",
+          "title": "Animal group"
+        },
+        {
+          "field": "original_threat",
+          "type": "nominal",
+          "title": "Threat category"
+        },
+        {
+          "field": "affected_taxa",
+          "type": "quantitative",
+          "title": "Taxa affected",
+          "format": ",d"
+        },
+        {
+          "field": "assessed_taxa",
+          "type": "quantitative",
+          "title": "Taxa assessed",
+          "format": ",d"
+        },
+        {
+          "field": "percent",
+          "type": "quantitative",
+          "title": "Share affected (%)",
+          "format": ".1f"
+        }
+      ]
+    },
+  
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "stroke": "#FFFFFF",
+          "strokeWidth": 3,
+          "cornerRadius": 3
+        },
+  
+        "encoding": {
+          "color": {
+            "field": "percent",
+            "type": "quantitative",
+            "scale": {
+              "domain": [0, 100],
+              "range": ["#ECF1E8", "#215A45"]
+            },
+            "legend": {
+              "title": "Taxa affected (%)",
+              "orient": "bottom",
+              "gradientLength": 300
+            }
+          }
+        }
+      },
+  
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 12,
+          "fontWeight": "bold"
+        },
+  
+        "encoding": {
+          "text": {
+            "field": "label",
+            "type": "nominal"
+          },
+          "color": {
+            "condition": {
+              "test": "datum.percent >= 50",
+              "value": "#FFFFFF"
+            },
+            "value": "#274036"
+          }
+        }
+      }
+    ],
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {
+        "stroke": null
+      }
+    }
+  }
+  
