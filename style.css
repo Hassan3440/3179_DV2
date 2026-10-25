@@ -1,13 +1,29 @@
 
-/* Main colours */
+/* ============================================
+   AUSTRALIA'S VANISHING WILDLIFE
+   FIT3179 DATA VISUALISATION 2
+   ============================================ */
+
+
+/* 1. COLOURS */
 
 :root {
-    --cream: #F1EFE6;
-    --green: #263D36;
-    --orange: #B45F45;
-    --light-green: #E7EDE6;
-    --grey: #66776B;
+    --background: #f1efe6;
+    --paper: #faf9f4;
+    --white: #ffffff;
+
+    --forest: #263d36;
+    --green: #557b69;
+    --sage: #e5ece4;
+    --orange: #b45f45;
+
+    --text: #3e554b;
+    --muted: #708377;
+    --border: #d9e1d7;
 }
+
+
+/* 2. GENERAL PAGE STYLING */
 
 * {
     box-sizing: border-box;
@@ -19,80 +35,43 @@ html {
 
 body {
     margin: 0;
-    color: var(--green);
+    color: var(--text);
+
     font-family: "Source Sans 3", Arial, sans-serif;
-    background-color: var(--cream);
+    font-size: 16px;
+    line-height: 1.7;
 
-    /* Light topographic pattern */
-    background-image: repeating-radial-gradient(
-        circle at -8% 40%,
-        transparent 0 85px,
-        rgba(38, 61, 54, 0.018) 86px,
-        transparent 87px 145px
-    );
+    background-color: var(--background);
+
+    /* Subtle curved background pattern */
+    background-image:
+        repeating-radial-gradient(
+            circle at -18% 40%,
+            transparent 0 145px,
+            rgba(78, 113, 92, 0.045) 146px 147px
+        ),
+        repeating-radial-gradient(
+            circle at 115% 5%,
+            transparent 0 250px,
+            rgba(78, 113, 92, 0.035) 251px 252px
+        );
+
+    background-attachment: fixed;
 }
 
-h1, h2, h3 {
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 500;
-}
-
-h2 {
-    font-size: 39px;
-    margin: 8px 0 14px;
-}
-
+h1,
+h2,
 h3 {
-    font-size: 25px;
-    margin: 8px 0 12px;
-}
-
-p {
-    line-height: 1.65;
-}
-
-.page {
-    max-width: 1280px;
-    margin: auto;
-    padding: 0 34px;
-}
-
-.label {
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    color: var(--orange);
-}
-
-.small, .source {
-    font-size: 12px;
-    color: var(--grey);
-}
-
-
-/* Introduction */
-
-.hero {
-    background: #FBFAF5;
-    padding: 38px 45px 25px;
-    margin-top: 30px;
-    border: 1px solid #DADCD2;
-    border-left: 5px solid var(--orange);
-    border-radius: 7px;
-}
-
-.hero-layout {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 45px;
-    align-items: center;
-    padding: 30px 0;
+    font-family: "Fraunces", Georgia, serif;
+    color: var(--forest);
+    font-weight: 600;
+    line-height: 1.22;
 }
 
 h1 {
-    font-size: clamp(45px, 5vw, 70px);
-    line-height: 1.12;
-    margin: 15px 0 26px;
+    font-size: clamp(3.2rem, 5vw, 5.2rem);
+    letter-spacing: -1.5px;
+    margin: 18px 0 26px;
 }
 
 h1 span {
@@ -100,51 +79,156 @@ h1 span {
     color: var(--orange);
 }
 
-.intro {
-    font-size: 18px;
+h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin: 12px 0 20px;
 }
 
+h3 {
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    margin: 10px 0 16px;
+}
+
+p {
+    margin: 0 0 16px;
+}
+
+a {
+    color: var(--orange);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: #88442f;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* 3. PAGE CONTAINER */
+
+.page {
+    width: min(100% - 64px, 1140px);
+    margin: 0 auto;
+    padding: 35px 0 90px;
+}
+
+.eyebrow,
+.label {
+    color: var(--orange);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.small {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+
+/* 4. INTRODUCTION */
+
+.hero {
+    background: var(--paper);
+    border: 1px solid #dedfd5;
+    border-left: 5px solid var(--orange);
+    border-radius: 5px 12px 12px 5px;
+
+    padding: 38px 48px 28px;
+    margin-bottom: 70px;
+
+    box-shadow: 0 12px 35px rgba(44, 64, 53, 0.025);
+}
+
+.hero > .eyebrow {
+    color: var(--green);
+    margin-bottom: 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(290px, 0.85fr);
+
+    align-items: center;
+    gap: 60px;
+    padding: 48px 0;
+}
+
+.hero .intro {
+    font-size: 1.17rem;
+    font-weight: 600;
+    max-width: 600px;
+}
+
+.hero-layout > div > p {
+    max-width: 590px;
+}
+
+
+/* 5. INTRODUCTION FACT CARD */
+
 .hero-note {
-    background: var(--light-green);
-    padding: 22px;
-    border-radius: 8px;
+    background: #e7ede3;
+    border-radius: 12px;
+    border-top: 4px solid var(--green);
+    padding: 24px;
 }
 
 .hero-image {
+    display: block;
     width: 100%;
-    height: 195px;
+    height: 190px;
+
     object-fit: cover;
-    border-radius: 7px;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
-.big-number {
-    font: 65px "Fraunces", Georgia, serif;
-    margin: 5px 0;
+.hero-note .big-number {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(3.4rem, 5vw, 4.8rem);
+    color: var(--forest);
+    line-height: 1.15;
+    margin: 10px 0;
 }
 
 .hero-note strong {
     color: var(--orange);
-    font-size: 20px;
+    font-size: 1.45rem;
 }
 
 .hero-note hr {
     border: 0;
-    border-top: 1px solid #CAD3C9;
+    border-top: 1px solid #cbd7cb;
+    margin: 22px 0;
 }
+
+
+/* 6. CHAPTER NAVIGATION */
 
 .chapters {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
-    padding-top: 20px;
-    border-top: 1px solid #DADCD2;
-    font-size: 12px;
-    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
 }
 
-.chapters a {
+.chapters a,
+.chapters span {
     color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
     text-decoration: none;
 }
 
@@ -153,188 +237,615 @@ h1 span {
 }
 
 .chapters span {
-    color: #A0A9A0;
+    opacity: 0.55;
 }
 
 
-/* Charts */
+/* 7. CHAPTERS AND CHART DESCRIPTIONS */
 
 .chapter {
-    padding-top: 75px;
+    margin: 55px 0 85px;
+}
+
+.chapter > .label {
+    margin-bottom: 10px;
 }
 
 .chapter-intro {
-    max-width: 790px;
-    font-size: 17px;
-    margin-bottom: 38px;
+    max-width: 850px;
+    font-size: 1.09rem;
+    margin-bottom: 46px;
 }
 
 .chart-section {
-    border-top: 1px solid #D5D9CF;
-    padding: 30px 0 40px;
+    border-top: 1px solid var(--border);
+    padding-top: 34px;
+    margin: 48px 0 65px;
 }
 
 .chart-section > p:not(.label) {
-    max-width: 880px;
+    max-width: 900px;
 }
 
+.chart-section > h3 {
+    max-width: 1000px;
+}
+
+.chart-section .label {
+    margin-bottom: 6px;
+}
+
+
+/* 8. VEGA-LITE CHART CONTAINERS */
+
 .chart {
-    background: white;
-    border: 1px solid #DEE5DF;
-    padding: 24px;
-    border-radius: 10px;
-    margin: 24px 0 16px;
-    min-width: 0;
+    width: 100%;
+    max-width: 1060px;
+
+    margin: 27px auto 20px;
+    padding: 24px 18px;
+
+    background: var(--white);
+    border: 1px solid #dae4dc;
+    border-radius: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    box-shadow: 0 5px 18px rgba(48, 69, 56, 0.025);
 }
 
 .chart .vega-embed {
-    width: 100%;
+    display: block;
+    width: max-content;
+    max-width: none;
+    margin: 0 auto;
 }
 
-.chart svg {
-    max-width: 100%;
+.chart svg,
+.chart canvas {
+    display: block;
 }
+
+
+/* 9. ANNOTATIONS AND SOURCES */
 
 .hint {
-    color: var(--grey);
-    font-size: 13px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 10px 0 20px;
 }
 
 .finding {
-    background: var(--light-green);
-    border-left: 3px solid #728F7E;
-    padding: 18px 22px;
+    background: var(--sage);
+    border-left: 4px solid #789a84;
+
+    color: var(--forest);
+    padding: 19px 22px;
+    margin-top: 20px;
+
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.finding b,
+.finding strong {
+    color: var(--forest);
 }
 
 .source {
-    border-top: 1px solid #DADCD2;
-    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 20px;
+
+    font-size: 0.79rem;
+    color: var(--muted);
+    line-height: 1.65;
 }
 
 
-/* Wildlife photographs */
+/* 10. WILDLIFE PHOTOGRAPHS */
 
 .wildlife {
-    padding: 55px 0 15px;
-    border-top: 1px solid #DADCD2;
+    padding: 34px 0 50px;
+    margin: 75px 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.wildlife > p:not(.label) {
+    max-width: 720px;
 }
 
 .wildlife-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .wildlife-card {
-    background: white;
-    border: 1px solid #DFE5DD;
-    border-radius: 12px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
     overflow: hidden;
 }
 
-.wildlife-card img {
+.wildlife-card > img {
     display: block;
     width: 100%;
-    height: 245px;
+    height: 275px;
     object-fit: cover;
 }
 
 .wildlife-text {
-    padding: 23px;
+    padding: 28px;
 }
 
-.fact {
-    background: #F5F3EB;
+.wildlife-text h3 {
+    margin: 13px 0;
+}
+
+.wildlife-text .fact {
+    background: #f4f1e9;
     border-left: 3px solid var(--orange);
-    padding: 16px;
+
+    padding: 20px 22px;
+    margin-top: 24px;
+
+    border-radius: 0 8px 8px 0;
 }
 
 .fact b {
+    display: block;
+
+    color: var(--orange);
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+
+/* 11. THREATS PHOTO GALLERY */
+
+.threat-gallery {
+    margin: 70px 0;
+    padding: 35px 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.threat-gallery > p:not(.label) {
+    max-width: 750px;
+}
+
+.threat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.threat-card {
+    margin: 0;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.threat-card img {
+    display: block;
+    width: 100%;
+    height: 195px;
+    object-fit: cover;
+}
+
+.threat-card figcaption {
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+}
+
+.threat-card strong {
+    color: var(--forest);
+    font-size: 1rem;
+}
+
+.threat-card span {
+    line-height: 1.55;
+}
+
+.threat-card small {
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+.threat-card a {
     color: var(--orange);
 }
 
 
-/* Footer */
+/* ============================================
+   12. CHART 9: UPSET PLOT STYLING
+   ============================================ */
 
-footer {
-    margin: 65px 0;
-    padding-top: 30px;
-    border-top: 1px solid #D5D9CF;
+.viz9-intro {
+    max-width: 850px;
+}
+
+/* Three statistics above Chart 9 */
+
+.viz9-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 26px 0;
+}
+
+.viz9-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #f5f7f0;
+    border: 1px solid #dbe4db;
+    border-radius: 12px;
+
+    padding: 20px;
+    min-height: 145px;
+}
+
+.viz9-stat strong {
+    display: block;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.2;
+    color: var(--forest);
+    font-weight: 600;
+}
+
+.viz9-stat span {
+    display: block;
+    margin-top: 10px;
+
+    color: #567066;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.viz9-stat.featured {
+    background: #f4eae3;
+    border-color: #e5cbbd;
+}
+
+.viz9-stat.featured strong {
+    color: var(--orange);
+}
+
+/* Instructions for reading the UpSet plot */
+
+.viz9-explainer {
+    color: #496356;
+    font-size: 0.98rem;
+    margin: 14px 0 20px;
+}
+
+/* Large chart with horizontal scrolling on mobile */
+
+#chart9 {
+    width: 100%;
+    max-width: 1060px;
+    overflow-x: auto;
+}
+
+/* Filled and empty dot key */
+
+.viz9-key {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+
+    margin: 15px 0;
+    font-size: 0.9rem;
+    color: #4b655a;
+}
+
+.viz9-dot {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    margin-right: 7px;
+    vertical-align: -1px;
+}
+
+.viz9-dot.on {
+    background: #315e50;
+}
+
+.viz9-dot.off {
+    background: #c6d0c8;
 }
 
 
+/* =========================================
+   CHART 10: MULTIPLE THREAT WAFFLE
+   ========================================= */
+
+   .viz10-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(280px, 0.85fr);
+    gap: 22px;
+    align-items: stretch;
+    margin: 28px 0 22px;
+}
+
+/* Waffle visualisation */
+
+.viz10-chart {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 20px 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viz10-chart .vega-embed {
+    margin: 0 auto;
+}
+
+/* Right-hand interpretation panel */
+
+.viz10-panel {
+    padding: 25px;
+    border: 1px solid #dbe4db;
+    border-top: 4px solid #b45f45;
+    border-radius: 12px;
+    background: #f5f7f0;
+}
+
+.viz10-kicker {
+    color: #b45f45;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.viz10-number {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(3rem, 4vw, 4.6rem);
+    line-height: 1.15;
+    font-weight: 600;
+    color: #b45f45;
+    margin-bottom: 10px;
+}
+
+.viz10-summary {
+    font-size: 0.97rem;
+    line-height: 1.55;
+    color: #344d40;
+    margin-bottom: 25px;
+}
+
+.viz10-key-heading {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #667d6e;
+
+    border-top: 1px solid #dbe4db;
+    padding-top: 17px;
+    margin-bottom: 8px;
+}
+
+/* Breakdown legend */
+
+.viz10-key-row {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e9e0;
+}
+
+.viz10-swatch {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.viz10-key-text strong {
+    display: block;
+    color: #344d40;
+    font-size: 0.93rem;
+    line-height: 1.3;
+}
+
+.viz10-key-text small {
+    display: block;
+    color: #738579;
+    font-size: 0.79rem;
+    line-height: 1.3;
+}
+
+.viz10-key-row > b {
+    color: #344d40;
+    font-size: 0.9rem;
+}
+
+/* Match the Vega-Lite waffle colours */
+
+.z0 { background: #E5E9E3; }
+.z1 { background: #BCD1C3; }
+.z2 { background: #628D79; }
+.z3 { background: #D08E69; }
+.z4 { background: #A95140; }
+.z5 { background: #65384A; }
+
 /* Smaller screens */
 
-@media (max-width: 800px) {
-
-    .page {
-        padding: 0 16px;
-    }
-
-    .hero {
-        padding: 25px;
-    }
-
-    .hero-layout,
-    .wildlife-grid {
+@media (max-width: 1050px) {
+    .viz10-layout {
         grid-template-columns: 1fr;
     }
 
+    .viz10-panel {
+        max-width: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .viz10-chart {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 12px;
+    }
+
+    .viz10-panel {
+        padding: 20px;
+    }
+}
+
+
+/* 13. FOOTER */
+
+footer {
+    margin-top: 95px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+footer h3 {
+    font-size: 1.65rem;
+}
+
+footer p {
+    color: var(--muted);
+}
+
+
+/* 14. TABLET LAYOUT */
+
+@media (max-width: 900px) {
+
+    .page {
+        width: min(100% - 36px, 1140px);
+    }
+
+    .hero {
+        padding: 28px;
+    }
+
     .hero-layout {
-        gap: 22px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 35px 0;
+    }
+
+    .hero-note {
+        max-width: 550px;
+    }
+
+    .chart {
+        padding: 16px 12px;
+    }
+
+}
+
+
+/* 15. MOBILE LAYOUT */
+
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 3.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .page {
+        width: min(100% - 24px, 1140px);
+    }
+
+    .hero {
+        padding: 22px;
+        margin-bottom: 40px;
+    }
+
+    .chapters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .chapter {
+        margin: 40px 0 60px;
+    }
+
+    .chart-section {
+        margin: 35px 0 50px;
+    }
+
+    .wildlife-grid,
+    .threat-grid,
+    .viz9-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .wildlife-card > img {
+        height: 220px;
+    }
+
+    .threat-card img {
+        height: 220px;
+    }
+
+    .wildlife-text {
+        padding: 20px;
+    }
+
+    .viz9-stat {
+        min-height: 0;
+        padding: 16px;
+    }
+
+    .viz9-stat strong {
+        font-size: 1.8rem;
     }
 
     .chart {
         padding: 12px;
-        overflow-x: auto;
     }
 
-    h1 {
-        font-size: 44px;
+    .finding {
+        padding: 15px 17px;
     }
 
-    h2 {
-        font-size: 32px;
-    }
 }
 
-/* Keep chart containers wide */
 
-.chart {
-    display: block !important;
-    width: 100% !important;
-    overflow-x: auto;
-}
+/* Accessibility */
 
-.chart svg {
-    max-width: none;
-}
-
-/* Make chart boxes fit the visualisations */
-
-.chart {
-    width: fit-content !important;
-    max-width: 100%;
-    margin: 24px auto 16px;
-    padding: 18px 20px;
-    overflow-x: auto;
-}
-
-.chart .vega-embed {
-    display: inline-block;
-    width: max-content !important;
-    max-width: none;
-}
-
-.chart svg {
-    max-width: none;
-}
-
-/* Keep charts usable on small screens */
-
-@media (max-width: 800px) {
-    .chart {
-        width: 100% !important;
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }

@@ -1,0 +1,61 @@
+rank,threat_index,threat,included,included_label,combination,taxa_count,percent_of_456,threat_count
+1,1,Habitat loss,1,Recorded,Habitat loss + Invasives & disease + Adverse fire,64,14.0,3
+1,2,Invasives & disease,1,Recorded,Habitat loss + Invasives & disease + Adverse fire,64,14.0,3
+1,3,Adverse fire,1,Recorded,Habitat loss + Invasives & disease + Adverse fire,64,14.0,3
+1,4,Climate / weather,0,Not recorded,Habitat loss + Invasives & disease + Adverse fire,64,14.0,3
+1,5,Water changes,0,Not recorded,Habitat loss + Invasives & disease + Adverse fire,64,14.0,3
+2,1,Habitat loss,0,Not recorded,Invasives & disease,40,8.8,1
+2,2,Invasives & disease,1,Recorded,Invasives & disease,40,8.8,1
+2,3,Adverse fire,0,Not recorded,Invasives & disease,40,8.8,1
+2,4,Climate / weather,0,Not recorded,Invasives & disease,40,8.8,1
+2,5,Water changes,0,Not recorded,Invasives & disease,40,8.8,1
+3,1,Habitat loss,1,Recorded,Habitat loss + Invasives & disease + Adverse fire + Climate / weather,38,8.3,4
+3,2,Invasives & disease,1,Recorded,Habitat loss + Invasives & disease + Adverse fire + Climate / weather,38,8.3,4
+3,3,Adverse fire,1,Recorded,Habitat loss + Invasives & disease + Adverse fire + Climate / weather,38,8.3,4
+3,4,Climate / weather,1,Recorded,Habitat loss + Invasives & disease + Adverse fire + Climate / weather,38,8.3,4
+3,5,Water changes,0,Not recorded,Habitat loss + Invasives & disease + Adverse fire + Climate / weather,38,8.3,4
+4,1,Habitat loss,1,Recorded,Habitat loss + Invasives & disease,36,7.9,2
+4,2,Invasives & disease,1,Recorded,Habitat loss + Invasives & disease,36,7.9,2
+4,3,Adverse fire,0,Not recorded,Habitat loss + Invasives & disease,36,7.9,2
+4,4,Climate / weather,0,Not recorded,Habitat loss + Invasives & disease,36,7.9,2
+4,5,Water changes,0,Not recorded,Habitat loss + Invasives & disease,36,7.9,2
+5,1,Habitat loss,1,Recorded,Habitat loss,32,7.0,1
+5,2,Invasives & disease,0,Not recorded,Habitat loss,32,7.0,1
+5,3,Adverse fire,0,Not recorded,Habitat loss,32,7.0,1
+5,4,Climate / weather,0,Not recorded,Habitat loss,32,7.0,1
+5,5,Water changes,0,Not recorded,Habitat loss,32,7.0,1
+6,1,Habitat loss,0,Not recorded,Invasives & disease + Adverse fire,28,6.1,2
+6,2,Invasives & disease,1,Recorded,Invasives & disease + Adverse fire,28,6.1,2
+6,3,Adverse fire,1,Recorded,Invasives & disease + Adverse fire,28,6.1,2
+6,4,Climate / weather,0,Not recorded,Invasives & disease + Adverse fire,28,6.1,2
+6,5,Water changes,0,Not recorded,Invasives & disease + Adverse fire,28,6.1,2
+7,1,Habitat loss,1,Recorded,Habitat loss + Invasives & disease + Climate / weather,27,5.9,3
+7,2,Invasives & disease,1,Recorded,Habitat loss + Invasives & disease + Climate / weather,27,5.9,3
+7,3,Adverse fire,0,Not recorded,Habitat loss + Invasives & disease + Climate / weather,27,5.9,3
+7,4,Climate / weather,1,Recorded,Habitat loss + Invasives & disease + Climate / weather,27,5.9,3
+7,5,Water changes,0,Not recorded,Habitat loss + Invasives & disease + Climate / weather,27,5.9,3
+8,1,Habitat loss,0,Not recorded,Invasives & disease + Adverse fire + Climate / weather,22,4.8,3
+8,2,Invasives & disease,1,Recorded,Invasives & disease + Adverse fire + Climate / weather,22,4.8,3
+8,3,Adverse fire,1,Recorded,Invasives & disease + Adverse fire + Climate / weather,22,4.8,3
+8,4,Climate / weather,1,Recorded,Invasives & disease + Adverse fire + Climate / weather,22,4.8,3
+8,5,Water changes,0,Not recorded,Invasives & disease + Adverse fire + Climate / weather,22,4.8,3
+9,1,Habitat loss,0,Not recorded,Climate / weather,22,4.8,1
+9,2,Invasives & disease,0,Not recorded,Climate / weather,22,4.8,1
+9,3,Adverse fire,0,Not recorded,Climate / weather,22,4.8,1
+9,4,Climate / weather,1,Recorded,Climate / weather,22,4.8,1
+9,5,Water changes,0,Not recorded,Climate / weather,22,4.8,1
+10,1,Habitat loss,0,Not recorded,Invasives & disease + Climate / weather,20,4.4,2
+10,2,Invasives & disease,1,Recorded,Invasives & disease + Climate / weather,20,4.4,2
+10,3,Adverse fire,0,Not recorded,Invasives & disease + Climate / weather,20,4.4,2
+10,4,Climate / weather,1,Recorded,Invasives & disease + Climate / weather,20,4.4,2
+10,5,Water changes,0,Not recorded,Invasives & disease + Climate / weather,20,4.4,2
+11,1,Habitat loss,1,Recorded,Habitat loss + Invasives & disease + Climate / weather + Water changes,18,3.9,4
+11,2,Invasives & disease,1,Recorded,Habitat loss + Invasives & disease + Climate / weather + Water changes,18,3.9,4
+11,3,Adverse fire,0,Not recorded,Habitat loss + Invasives & disease + Climate / weather + Water changes,18,3.9,4
+11,4,Climate / weather,1,Recorded,Habitat loss + Invasives & disease + Climate / weather + Water changes,18,3.9,4
+11,5,Water changes,1,Recorded,Habitat loss + Invasives & disease + Climate / weather + Water changes,18,3.9,4
+12,1,Habitat loss,1,Recorded,Habitat loss + Adverse fire,18,3.9,2
+12,2,Invasives & disease,0,Not recorded,Habitat loss + Adverse fire,18,3.9,2
+12,3,Adverse fire,1,Recorded,Habitat loss + Adverse fire,18,3.9,2
+12,4,Climate / weather,0,Not recorded,Habitat loss + Adverse fire,18,3.9,2
+12,5,Water changes,0,Not recorded,Habitat loss + Adverse fire,18,3.9,2

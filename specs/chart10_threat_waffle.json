@@ -1,0 +1,126 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "description": "100-square waffle chart showing the distribution of five selected threat categories among 456 fauna taxa.",
+  
+    "background": "white",
+  
+    "width": 470,
+    "height": 470,
+  
+    "data": {
+      "sequence": {
+        "start": 0,
+        "stop": 100,
+        "step": 1,
+        "as": "tile"
+      }
+    },
+  
+    "transform": [
+      {
+        "calculate": "datum.tile % 10",
+        "as": "column"
+      },
+      {
+        "calculate": "floor(datum.tile / 10)",
+        "as": "row"
+      },
+      {
+        "calculate": "datum.tile < 5 ? '0 selected' : datum.tile < 26 ? '1 threat' : datum.tile < 53 ? '2 threats' : datum.tile < 86 ? '3 threats' : datum.tile < 99 ? '4 threats' : '5 threats'",
+        "as": "threat_group"
+      },
+      {
+        "calculate": "datum.tile < 5 ? 23 : datum.tile < 26 ? 98 : datum.tile < 53 ? 122 : datum.tile < 86 ? 149 : datum.tile < 99 ? 59 : 5",
+        "as": "taxa_count"
+      },
+      {
+        "calculate": "datum.taxa_count / 456 * 100",
+        "as": "percentage"
+      }
+    ],
+  
+    "mark": {
+      "type": "rect",
+      "cornerRadius": 4,
+      "stroke": "white",
+      "strokeWidth": 3
+    },
+  
+    "encoding": {
+      "x": {
+        "field": "column",
+        "type": "ordinal",
+        "sort": "ascending",
+        "axis": null,
+        "scale": {
+          "paddingInner": 0.08,
+          "paddingOuter": 0.04
+        }
+      },
+  
+      "y": {
+        "field": "row",
+        "type": "ordinal",
+        "sort": "ascending",
+        "axis": null,
+        "scale": {
+          "paddingInner": 0.08,
+          "paddingOuter": 0.04
+        }
+      },
+  
+      "color": {
+        "field": "threat_group",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "0 selected",
+            "1 threat",
+            "2 threats",
+            "3 threats",
+            "4 threats",
+            "5 threats"
+          ],
+          "range": [
+            "#E5E9E3",
+            "#BCD1C3",
+            "#628D79",
+            "#D08E69",
+            "#A95140",
+            "#65384A"
+          ]
+        },
+        "legend": null
+      },
+  
+      "tooltip": [
+        {
+          "field": "threat_group",
+          "type": "nominal",
+          "title": "Selected threats recorded"
+        },
+        {
+          "field": "taxa_count",
+          "type": "quantitative",
+          "title": "Fauna taxa",
+          "format": ",d"
+        },
+        {
+          "field": "percentage",
+          "type": "quantitative",
+          "title": "Of all 456 taxa (%)",
+          "format": ".1f"
+        }
+      ]
+    },
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {
+        "stroke": null
+      }
+    }
+  }
+  
