@@ -1,0 +1,401 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Australia's progress toward protecting 30% of its land.",
+    "background": "white",
+  
+    "config": {
+      "view": {
+        "stroke": null
+      },
+      "axis": {
+        "labelColor": "#314d45",
+        "titleColor": "#314d45",
+        "gridColor": "#dfe7e1",
+        "domain": false,
+        "tickColor": "#b7c8bf",
+        "labelFontSize": 12,
+        "titleFontSize": 13
+      },
+      "text": {
+        "font": "sans-serif",
+        "color": "#314d45"
+      }
+    },
+  
+    "spacing": 30,
+  
+    "vconcat": [
+      {
+        "width": 860,
+        "height": 120,
+  
+        "layer": [
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "start": 0,
+                  "end": 30
+                }
+              ]
+            },
+            "mark": {
+              "type": "bar",
+              "height": 38,
+              "cornerRadius": 18,
+              "color": "#dfe8e1"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "start",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                },
+                "axis": {
+                  "title": "Share of Australian land protected (%)",
+                  "values": [0, 5, 10, 15, 20, 25, 30, 35],
+                  "grid": true
+                }
+              },
+              "x2": {
+                "field": "end"
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "start": 0,
+                  "end": 22.57
+                }
+              ]
+            },
+            "mark": {
+              "type": "bar",
+              "height": 38,
+              "cornerRadius": 18,
+              "color": "#6f9b88"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "start",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              },
+              "x2": {
+                "field": "end"
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "start": 22.57,
+                  "end": 30
+                }
+              ]
+            },
+            "mark": {
+              "type": "bar",
+              "height": 38,
+              "cornerRadius": 18,
+              "color": "#d68f68"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "start",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              },
+              "x2": {
+                "field": "end"
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "x": 30
+                }
+              ]
+            },
+            "mark": {
+              "type": "rule",
+              "strokeDash": [6, 6],
+              "strokeWidth": 2,
+              "color": "#b85f43"
+            },
+            "encoding": {
+              "x": {
+                "field": "x",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "x": 22.57,
+                  "label": "22.57% in 2024"
+                }
+              ]
+            },
+            "mark": {
+              "type": "text",
+              "dy": -28,
+              "align": "right",
+              "baseline": "bottom",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "color": "#24463d"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "x",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              },
+              "text": {
+                "field": "label"
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "x": 30,
+                  "label": "30% target"
+                }
+              ]
+            },
+            "mark": {
+              "type": "text",
+              "dy": -28,
+              "dx": 6,
+              "align": "left",
+              "baseline": "bottom",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "color": "#b85f43"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "x",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              },
+              "text": {
+                "field": "label"
+              }
+            }
+          },
+  
+          {
+            "data": {
+              "values": [
+                {
+                  "track": "Protected land share",
+                  "x": 26.285,
+                  "label": "Gap: 7.43 pp"
+                }
+              ]
+            },
+            "mark": {
+              "type": "text",
+              "baseline": "middle",
+              "align": "center",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "color": "white"
+            },
+            "encoding": {
+              "y": {
+                "field": "track",
+                "type": "nominal",
+                "axis": null
+              },
+              "x": {
+                "field": "x",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 35]
+                }
+              },
+              "text": {
+                "field": "label"
+              }
+            }
+          }
+        ]
+      },
+  
+      {
+        "width": 860,
+        "height": 110,
+  
+        "data": {
+          "values": [
+            {
+              "pace": "Observed average gain (2004–2024)",
+              "value": 0.60,
+              "group": "Observed"
+            },
+            {
+              "pace": "Required average gain to reach 30% by 2030",
+              "value": 1.24,
+              "group": "Required"
+            }
+          ]
+        },
+  
+        "layer": [
+          {
+            "mark": {
+              "type": "bar",
+              "height": 28,
+              "cornerRadiusEnd": 10
+            },
+            "encoding": {
+              "y": {
+                "field": "pace",
+                "type": "ordinal",
+                "sort": [
+                  "Observed average gain (2004–2024)",
+                  "Required average gain to reach 30% by 2030"
+                ],
+                "axis": {
+                  "title": null,
+                  "labelLimit": 340
+                }
+              },
+              "x": {
+                "field": "value",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 1.4]
+                },
+                "axis": {
+                  "title": "Percentage-point increase in protected land per year",
+                  "values": [0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4],
+                  "grid": true
+                }
+              },
+              "color": {
+                "field": "group",
+                "type": "nominal",
+                "scale": {
+                  "domain": ["Observed", "Required"],
+                  "range": ["#6f9b88", "#d07a58"]
+                },
+                "legend": null
+              },
+              "tooltip": [
+                {
+                  "field": "pace",
+                  "type": "nominal",
+                  "title": "Measure"
+                },
+                {
+                  "field": "value",
+                  "type": "quantitative",
+                  "format": ".2f",
+                  "title": "pp per year"
+                }
+              ]
+            }
+          },
+  
+          {
+            "transform": [
+              {
+                "calculate": "format(datum.value, '.2f') + ' pp/year'",
+                "as": "label"
+              }
+            ],
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "middle",
+              "dx": 8,
+              "fontSize": 13,
+              "fontWeight": "bold",
+              "color": "#314d45"
+            },
+            "encoding": {
+              "y": {
+                "field": "pace",
+                "type": "ordinal",
+                "sort": [
+                  "Observed average gain (2004–2024)",
+                  "Required average gain to reach 30% by 2030"
+                ],
+                "axis": null
+              },
+              "x": {
+                "field": "value",
+                "type": "quantitative",
+                "scale": {
+                  "domain": [0, 1.4]
+                }
+              },
+              "text": {
+                "field": "label"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

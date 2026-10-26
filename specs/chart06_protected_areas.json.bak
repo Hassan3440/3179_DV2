@@ -1,0 +1,149 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Protected land area and proportion protected across Australian states and territories, based on CAPAD 2024.",
+
+  "width": 850,
+  "height": 540,
+
+  "projection": {
+    "type": "mercator",
+    "center": [133, -27],
+    "scale": 685,
+    "translate": [425, 265]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/geo/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#F1F4ED",
+        "stroke": "#9FB2A5",
+        "strokeWidth": 0.8
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/processed/chart06_protected_states.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "longitude": "number",
+            "latitude": "number",
+            "protected_km2": "number",
+            "protected_percent": "number",
+            "protected_areas": "number",
+            "land_km2": "number"
+          }
+        }
+      },
+
+      "mark": {
+        "type": "circle",
+        "opacity": 0.88,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "size": {
+          "field": "protected_km2",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 800000],
+            "range": [100, 3000]
+          },
+          "legend": {
+            "title": "Protected land (km²)",
+            "orient": "bottom",
+            "format": "~s",
+            "values": [
+              0,
+              200000,
+              400000,
+              600000,
+              800000
+            ],
+            "labelFontSize": 11
+          }
+        },
+
+        "color": {
+          "field": "protected_percent",
+          "type": "quantitative",
+          "scale": {
+            "domain": [9, 56],
+            "range": [
+              "#BED9C9",
+              "#176247"
+            ]
+          },
+          "legend": {
+            "title": "Land protected (%)",
+            "orient": "bottom",
+            "gradientLength": 200,
+            "labelFontSize": 11
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State / Territory"
+          },
+          {
+            "field": "protected_km2",
+            "type": "quantitative",
+            "title": "Protected land (km²)",
+            "format": ",.0f"
+          },
+          {
+            "field": "protected_percent",
+            "type": "quantitative",
+            "title": "Land protected (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "protected_areas",
+            "type": "quantitative",
+            "title": "Number of protected areas",
+            "format": ",d"
+          },
+          {
+            "field": "land_km2",
+            "type": "quantitative",
+            "title": "Jurisdiction land area (km²)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    }
+  }
+}

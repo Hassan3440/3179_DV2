@@ -1,0 +1,9 @@
+state,abbr,longitude,latitude,protected_km2,land_km2,protected_percent,protected_areas
+New South Wales,NSW,147.01607,-32.15027,83650.6,801150.1,10.4,2657
+Victoria,VIC,144.28209,-36.8475,40235.5,227443.7,17.7,4709
+Queensland,QLD,144.44097,-22.52417,161831.5,1729742.2,9.4,1230
+South Australia,SA,135.76086,-30.0455,299635.2,984321.9,30.4,2085
+Western Australia,WA,122.29172,-25.35033,786742.2,2527013.0,31.1,1888
+Tasmania,TAS,146.57857,-42.00436,29280.5,68401.4,42.8,1721
+Northern Territory,NT,133.36079,-19.4291,332087.4,1347791.6,24.6,84
+Australian Capital Territory,ACT,149.00268,-35.4882,1319.0,2358.1,55.9,51

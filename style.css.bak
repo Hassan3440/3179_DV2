@@ -1,0 +1,1479 @@
+
+/* ============================================
+   AUSTRALIA'S VANISHING WILDLIFE
+   FIT3179 DATA VISUALISATION 2
+
+   COMPLETE STYLESHEET
+   CHARTS 01 - 12
+   ============================================ */
+
+
+/* ============================================
+   1. COLOUR PALETTE
+   ============================================ */
+
+   :root {
+    --background: #f1efe6;
+    --paper: #faf9f4;
+    --white: #ffffff;
+
+    --forest: #263d36;
+    --green: #557b69;
+    --sage: #e5ece4;
+    --orange: #b45f45;
+
+    --text: #3e554b;
+    --muted: #708377;
+    --border: #d9e1d7;
+}
+
+
+/* ============================================
+   2. GLOBAL STYLES
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    color: var(--text);
+
+    font-family: "Source Sans 3", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+
+    background-color: var(--background);
+
+    background-image:
+        repeating-radial-gradient(
+            circle at -18% 40%,
+            transparent 0 145px,
+            rgba(78, 113, 92, 0.045) 146px 147px
+        ),
+        repeating-radial-gradient(
+            circle at 115% 5%,
+            transparent 0 250px,
+            rgba(78, 113, 92, 0.035) 251px 252px
+        );
+
+    background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Fraunces", Georgia, serif;
+    color: var(--forest);
+    font-weight: 600;
+    line-height: 1.22;
+}
+
+h1 {
+    font-size: clamp(3.2rem, 5vw, 5.2rem);
+    letter-spacing: -1.5px;
+    margin: 18px 0 26px;
+}
+
+h1 span {
+    display: block;
+    color: var(--orange);
+}
+
+h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin: 12px 0 20px;
+}
+
+h3 {
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    margin: 10px 0 16px;
+}
+
+p {
+    margin: 0 0 16px;
+}
+
+a {
+    color: var(--orange);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: #88442f;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ============================================
+   3. MAIN PAGE CONTAINER
+   ============================================ */
+
+.page {
+    width: min(100% - 64px, 1140px);
+    margin: 0 auto;
+    padding: 35px 0 90px;
+}
+
+.eyebrow,
+.label {
+    color: var(--orange);
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.small {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+
+/* ============================================
+   4. INTRODUCTION / HERO
+   ============================================ */
+
+.hero {
+    background: var(--paper);
+
+    border: 1px solid #dedfd5;
+    border-left: 5px solid var(--orange);
+    border-radius: 5px 12px 12px 5px;
+
+    padding: 38px 48px 28px;
+    margin-bottom: 70px;
+
+    box-shadow:
+        0 12px 35px rgba(44, 64, 53, 0.025);
+}
+
+.hero > .eyebrow {
+    color: var(--green);
+    margin-bottom: 0;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(290px, 0.85fr);
+
+    align-items: center;
+    gap: 60px;
+    padding: 48px 0;
+}
+
+.hero .intro {
+    font-size: 1.17rem;
+    font-weight: 600;
+    max-width: 600px;
+}
+
+.hero-layout > div > p {
+    max-width: 590px;
+}
+
+
+/* ============================================
+   5. HERO FACT CARD
+   ============================================ */
+
+.hero-note {
+    background: #e7ede3;
+
+    border-radius: 12px;
+    border-top: 4px solid var(--green);
+
+    padding: 24px;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.hero-note .big-number {
+    font-family: "Fraunces", Georgia, serif;
+
+    font-size: clamp(3.4rem, 5vw, 4.8rem);
+    color: var(--forest);
+    line-height: 1.15;
+
+    margin: 10px 0;
+}
+
+.hero-note strong {
+    color: var(--orange);
+    font-size: 1.45rem;
+}
+
+.hero-note hr {
+    border: 0;
+    border-top: 1px solid #cbd7cb;
+    margin: 22px 0;
+}
+
+
+/* ============================================
+   6. CHAPTER NAVIGATION
+   ============================================ */
+
+.chapters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.chapters a,
+.chapters span {
+    color: var(--green);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+
+    text-decoration: none;
+}
+
+.chapters a:hover {
+    color: var(--orange);
+}
+
+.chapters span {
+    opacity: 0.55;
+}
+
+
+/* ============================================
+   7. CHAPTER LAYOUT
+   ============================================ */
+
+.chapter {
+    margin: 55px 0 85px;
+}
+
+.chapter > .label {
+    margin-bottom: 10px;
+}
+
+.chapter-intro {
+    max-width: 850px;
+    font-size: 1.09rem;
+    margin-bottom: 46px;
+}
+
+.chart-section {
+    border-top: 1px solid var(--border);
+
+    padding-top: 34px;
+    margin: 48px 0 65px;
+}
+
+.chart-section > p:not(.label) {
+    max-width: 900px;
+}
+
+.chart-section > h3 {
+    max-width: 1000px;
+}
+
+.chart-section .label {
+    margin-bottom: 6px;
+}
+
+
+/* ============================================
+   8. ALL VEGA-LITE VISUALISATIONS
+   ============================================ */
+
+.chart {
+    width: 100%;
+    max-width: 1060px;
+
+    margin: 27px auto 20px;
+    padding: 24px 18px;
+
+    background: var(--white);
+
+    border: 1px solid #dae4dc;
+    border-radius: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    box-shadow:
+        0 5px 18px rgba(48, 69, 56, 0.025);
+}
+
+.chart .vega-embed {
+    display: block;
+    width: max-content;
+    max-width: none;
+    margin: 0 auto;
+}
+
+.chart svg,
+.chart canvas {
+    display: block;
+}
+
+
+/* ============================================
+   9. ANNOTATIONS AND DATA SOURCES
+   ============================================ */
+
+.hint {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin: 10px 0 20px;
+}
+
+.finding {
+    background: var(--sage);
+    border-left: 4px solid #789a84;
+
+    color: var(--forest);
+
+    padding: 19px 22px;
+    margin-top: 20px;
+
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.finding b,
+.finding strong {
+    color: var(--forest);
+}
+
+.source {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 20px;
+
+    font-size: 0.79rem;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+
+/* ============================================
+   10. CHAPTER 1 WILDLIFE PHOTOGRAPHS
+   ============================================ */
+
+.wildlife {
+    padding: 34px 0 50px;
+    margin: 75px 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.wildlife > p:not(.label) {
+    max-width: 720px;
+}
+
+.wildlife-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+
+    margin-top: 30px;
+}
+
+.wildlife-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+.wildlife-card > img {
+    display: block;
+
+    width: 100%;
+    height: 275px;
+    object-fit: cover;
+}
+
+.wildlife-text {
+    padding: 28px;
+}
+
+.wildlife-text h3 {
+    margin: 13px 0;
+}
+
+.wildlife-text .fact {
+    background: #f4f1e9;
+    border-left: 3px solid var(--orange);
+
+    padding: 20px 22px;
+    margin-top: 24px;
+
+    border-radius: 0 8px 8px 0;
+}
+
+.fact b {
+    display: block;
+
+    color: var(--orange);
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+
+    margin-bottom: 10px;
+}
+
+
+/* ============================================
+   11. CHAPTER 3 PHOTOGRAPH GALLERY
+   ONLY THESE THREE IMAGES ARE ENLARGED
+   ============================================ */
+
+.threat-gallery {
+    margin: 70px 0;
+    padding: 35px 0;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.threat-gallery > p:not(.label) {
+    max-width: 750px;
+}
+
+.threat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-top: 28px;
+}
+
+.threat-card {
+    margin: 0;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    overflow: hidden;
+}
+
+/* Increased from 195px to 260px */
+
+.threat-card img {
+    display: block;
+
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+}
+
+.threat-card figcaption {
+    display: grid;
+    gap: 10px;
+    padding: 18px;
+}
+
+.threat-card strong {
+    color: var(--forest);
+    font-size: 1rem;
+}
+
+.threat-card span {
+    line-height: 1.55;
+}
+
+.threat-card small {
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+.threat-card a {
+    color: var(--orange);
+}
+
+
+/* ============================================
+   12. CHART 9 - UPSET PLOT
+   ============================================ */
+
+.viz9-intro {
+    max-width: 850px;
+}
+
+.viz9-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+    margin: 26px 0;
+}
+
+.viz9-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #f5f7f0;
+
+    border: 1px solid #dbe4db;
+    border-radius: 12px;
+
+    padding: 20px;
+    min-height: 145px;
+}
+
+.viz9-stat strong {
+    display: block;
+
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+
+    line-height: 1.2;
+    color: var(--forest);
+    font-weight: 600;
+}
+
+.viz9-stat span {
+    display: block;
+
+    margin-top: 10px;
+    color: #567066;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.viz9-stat.featured {
+    background: #f4eae3;
+    border-color: #e5cbbd;
+}
+
+.viz9-stat.featured strong {
+    color: var(--orange);
+}
+
+.viz9-explainer {
+    color: #496356;
+    font-size: 0.98rem;
+    margin: 14px 0 20px;
+}
+
+#chart9 {
+    width: 100%;
+    max-width: 1060px;
+    overflow-x: auto;
+}
+
+.viz9-key {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 24px;
+    margin: 15px 0;
+
+    font-size: 0.9rem;
+    color: #4b655a;
+}
+
+.viz9-dot {
+    display: inline-block;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    margin-right: 7px;
+
+    vertical-align: -1px;
+}
+
+.viz9-dot.on {
+    background: #315e50;
+}
+
+.viz9-dot.off {
+    background: #c6d0c8;
+}
+
+
+/* ============================================
+   13. CHART 10 - WAFFLE CHART
+   ============================================ */
+
+.viz10-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(280px, 0.85fr);
+
+    gap: 22px;
+    align-items: stretch;
+
+    margin: 28px 0 22px;
+}
+
+.viz10-chart {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 20px 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viz10-chart .vega-embed {
+    margin: 0 auto;
+}
+
+.viz10-panel {
+    padding: 25px;
+
+    background: #f5f7f0;
+
+    border: 1px solid #dbe4db;
+    border-top: 4px solid #b45f45;
+
+    border-radius: 12px;
+}
+
+.viz10-kicker {
+    color: #b45f45;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    margin-bottom: 10px;
+}
+
+.viz10-number {
+    font-family: "Fraunces", Georgia, serif;
+
+    font-size: clamp(3rem, 4vw, 4.6rem);
+    line-height: 1.15;
+    font-weight: 600;
+
+    color: #b45f45;
+    margin-bottom: 10px;
+}
+
+.viz10-summary {
+    font-size: 0.97rem;
+    line-height: 1.55;
+
+    color: #344d40;
+    margin-bottom: 25px;
+}
+
+.viz10-key-heading {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+
+    color: #667d6e;
+
+    border-top: 1px solid #dbe4db;
+    padding-top: 17px;
+    margin-bottom: 8px;
+}
+
+.viz10-key-row {
+    display: grid;
+
+    grid-template-columns:
+        16px minmax(0, 1fr) auto;
+
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e9e0;
+}
+
+.viz10-swatch {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 3px;
+}
+
+.viz10-key-text strong {
+    display: block;
+
+    color: #344d40;
+
+    font-size: 0.93rem;
+    line-height: 1.3;
+}
+
+.viz10-key-text small {
+    display: block;
+
+    color: #738579;
+
+    font-size: 0.79rem;
+    line-height: 1.3;
+}
+
+.viz10-key-row > b {
+    color: #344d40;
+    font-size: 0.9rem;
+}
+
+/* Waffle colours */
+
+.z0 {
+    background: #e5e9e3;
+}
+
+.z1 {
+    background: #bcd1c3;
+}
+
+.z2 {
+    background: #628d79;
+}
+
+.z3 {
+    background: #d08e69;
+}
+
+.z4 {
+    background: #a95140;
+}
+
+.z5 {
+    background: #65384a;
+}
+
+
+/* ============================================
+   14. CHAPTER 4 CONSERVATION PHOTOGRAPHS
+   ============================================ */
+
+.future-gallery {
+    margin: 80px 0 45px;
+    padding: 38px 0 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+.future-gallery > p:not(.label) {
+    max-width: 790px;
+}
+
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+    margin-top: 32px;
+}
+
+.future-photo-card {
+    margin: 0;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(44, 64, 53, 0.04);
+}
+
+.future-photo-card img {
+    display: block;
+
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+}
+
+.future-photo-content {
+    padding: 23px 25px 25px;
+}
+
+.future-photo-label {
+    display: block;
+
+    color: var(--orange);
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+
+    margin-bottom: 9px;
+}
+
+.future-photo-content h3 {
+    font-size: 1.38rem;
+    margin: 0 0 12px;
+}
+
+.future-photo-content p {
+    font-size: 0.96rem;
+    line-height: 1.6;
+}
+
+.future-photo-credit {
+    display: block;
+
+    padding-top: 12px;
+    margin-top: 17px;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.future-photo-credit a {
+    color: var(--orange);
+}
+
+
+/* ============================================
+   15. CHART 11 - SMALL MULTIPLE TRENDS
+   ============================================ */
+
+.viz11-intro {
+    max-width: 870px;
+}
+
+.viz11-note {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+    padding: 16px 20px;
+    margin: 22px 0;
+
+    background: #f4f1e9;
+
+    border: 1px solid #e6ddd0;
+    border-radius: 10px;
+
+    color: #43594d;
+
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.viz11-note-symbol {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 30px;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #e7d8c8;
+    color: #9f5c43;
+
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.viz11-guide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 10px 22px;
+
+    margin: 24px 0 15px;
+
+    color: #587066;
+    font-size: 0.9rem;
+}
+
+.viz11-guide-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.viz11-line-icon {
+    display: inline-block;
+
+    width: 28px;
+    height: 0;
+
+    border-top: 4px solid #467b67;
+    border-radius: 2px;
+}
+
+.viz11-band-icon {
+    display: inline-block;
+
+    width: 27px;
+    height: 13px;
+
+    border-radius: 3px;
+    background: #b8d3c4;
+}
+
+.viz11-baseline-icon {
+    display: inline-block;
+
+    width: 28px;
+    height: 0;
+
+    border-top: 2px dashed #98a79c;
+}
+
+/* Chart 11 container */
+
+.viz11-chart {
+    width: 100%;
+    max-width: 1060px;
+
+    margin: 25px auto 20px;
+    padding: 28px 20px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    overflow-x: auto;
+
+    box-shadow:
+        0 8px 28px rgba(44, 64, 53, 0.035);
+}
+
+.viz11-chart .vega-embed {
+    margin: 0 auto;
+    max-width: none;
+    width: max-content;
+}
+
+/* Four summary cards */
+
+.viz11-insights {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.viz11-insight {
+    padding: 17px;
+
+    background: #f5f7f0;
+
+    border: 1px solid #dbe4db;
+    border-radius: 10px;
+}
+
+.viz11-insight-label {
+    display: block;
+
+    color: #597064;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+
+    margin-bottom: 6px;
+}
+
+.viz11-insight-number {
+    display: block;
+
+    font-family: "Fraunces", Georgia, serif;
+
+    color: #355d4d;
+
+    font-size: clamp(1.45rem, 2.2vw, 2rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.viz11-insight.birds {
+    border-top: 4px solid #4b8269;
+}
+
+.viz11-insight.mammals {
+    border-top: 4px solid #b45f45;
+}
+
+.viz11-insight.reptiles {
+    border-top: 4px solid #7b8e60;
+}
+
+.viz11-insight.amphibians {
+    border-top: 4px solid #776b91;
+}
+
+.viz11-insight small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 0.76rem;
+    line-height: 1.4;
+}
+
+
+/* ============================================
+   16. CHART 12 - PROTECTED AREA HISTORY
+   ============================================ */
+
+/* Three headline statistic cards */
+
+.viz12-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+    margin: 27px 0 24px;
+}
+
+.viz12-stat {
+    padding: 22px;
+
+    background: #f5f7f0;
+
+    border: 1px solid #dce5db;
+    border-top: 4px solid #749582;
+    border-radius: 12px;
+}
+
+.viz12-stat span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #637e6d;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+.viz12-stat strong {
+    display: block;
+
+    font-family: "Fraunces", Georgia, serif;
+
+    font-size: clamp(1.9rem, 3vw, 2.55rem);
+    line-height: 1.2;
+
+    color: #263d36;
+}
+
+.viz12-stat small {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #718276;
+    font-size: 0.85rem;
+}
+
+.viz12-stat.featured {
+    background: #f5ebe5;
+
+    border-color: #e8d1c2;
+    border-top-color: #b45f45;
+}
+
+.viz12-stat.featured strong {
+    color: #b45f45;
+}
+
+
+/* Chart 12 main visualisation */
+
+.viz12-chart {
+    width: 100%;
+    max-width: 1060px;
+
+    min-height: 460px;
+
+    margin: 25px auto 16px;
+    padding: 28px 20px;
+
+    background: var(--white);
+
+    border: 1px solid #dce5db;
+    border-radius: 14px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    box-shadow:
+        0 8px 28px rgba(44, 64, 53, 0.035);
+}
+
+.viz12-chart .vega-embed {
+    width: max-content;
+    max-width: none;
+    margin: 0 auto;
+}
+
+
+/* Chart 12 explanatory legend */
+
+.viz12-guide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 12px 24px;
+
+    margin: 15px 0 22px;
+
+    color: #5a7263;
+    font-size: 0.88rem;
+}
+
+.viz12-guide span {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.viz12-line {
+    display: inline-block;
+
+    width: 28px;
+    height: 0;
+
+    border-top: 4px solid #386d56;
+    border-radius: 3px;
+}
+
+.viz12-point {
+    display: inline-block;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: #386d56;
+
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #386d56;
+}
+
+.viz12-bar {
+    display: inline-block;
+
+    width: 15px;
+    height: 17px;
+
+    background: #b45f45;
+
+    border-radius: 3px 3px 0 0;
+}
+
+
+/* Conservation context below chart */
+
+.viz12-context {
+    margin: 28px 0 22px;
+    padding: 23px 27px;
+
+    background: #f6f4eb;
+
+    border: 1px solid #e3ded0;
+    border-radius: 12px;
+}
+
+.viz12-context-label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #b45f45;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.viz12-context h4 {
+    font-family: "Fraunces", Georgia, serif;
+
+    font-size: 1.35rem;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: #263d36;
+
+    margin: 0 0 12px;
+}
+
+.viz12-context p {
+    margin: 0;
+    max-width: 850px;
+
+    color: #496055;
+    line-height: 1.7;
+}
+
+
+/* ============================================
+   17. FOOTER
+   ============================================ */
+
+footer {
+    margin-top: 95px;
+    padding-top: 40px;
+
+    border-top: 1px solid var(--border);
+}
+
+footer h3 {
+    font-size: 1.65rem;
+}
+
+footer p {
+    color: var(--muted);
+}
+
+
+/* ============================================
+   18. RESPONSIVE DESIGN - LARGE TABLETS
+   ============================================ */
+
+@media (max-width: 1050px) {
+
+    .viz10-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .viz11-insights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ============================================
+   19. RESPONSIVE DESIGN - TABLETS
+   ============================================ */
+
+@media (max-width: 900px) {
+
+    .page {
+        width: min(100% - 36px, 1140px);
+    }
+
+    .hero {
+        padding: 28px;
+    }
+
+    .hero-layout {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+        padding: 35px 0;
+    }
+
+    .hero-note {
+        max-width: 550px;
+    }
+
+    .chart {
+        padding: 16px 12px;
+    }
+
+    .future-photo-card img {
+        height: 210px;
+    }
+
+}
+
+
+/* ============================================
+   20. RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+
+@media (max-width: 700px) {
+
+    h1 {
+        font-size: 3.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .page {
+        width: min(100% - 24px, 1140px);
+    }
+
+    .hero {
+        padding: 22px;
+        margin-bottom: 40px;
+    }
+
+    .chapters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .chapter {
+        margin: 40px 0 60px;
+    }
+
+    .chart-section {
+        margin: 35px 0 50px;
+    }
+
+    .wildlife-grid,
+    .threat-grid,
+    .future-grid,
+    .viz9-stats,
+    .viz12-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .wildlife-card > img,
+    .future-photo-card img {
+        height: 220px;
+    }
+
+    /* Keep Chapter 3 pictures larger */
+
+    .threat-card img {
+        height: 260px;
+    }
+
+    .wildlife-text,
+    .future-photo-content {
+        padding: 20px;
+    }
+
+    .viz9-stat {
+        min-height: 0;
+        padding: 16px;
+    }
+
+    .viz9-stat strong {
+        font-size: 1.8rem;
+    }
+
+    .viz10-chart {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 12px;
+    }
+
+    .viz10-panel {
+        padding: 20px;
+    }
+
+    .viz11-insights {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .viz11-insight {
+        padding: 13px;
+    }
+
+    .viz11-chart,
+    .viz12-chart {
+        padding: 12px;
+    }
+
+    .viz12-stat {
+        padding: 19px;
+    }
+
+    .viz12-context {
+        padding: 18px;
+    }
+
+    .chart {
+        padding: 12px;
+    }
+
+    .finding {
+        padding: 15px 17px;
+    }
+
+}
+
+
+/* ============================================
+   21. ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+}
+/* =====================================
+   FINAL LAYOUT: CHART 3 CENTRING
+   ===================================== */
+
+   #chart3 {
+    text-align: center;
+}
+
+#chart3 .vega-embed {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    text-align: left;
+    vertical-align: top;
+}

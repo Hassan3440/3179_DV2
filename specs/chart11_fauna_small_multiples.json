@@ -1,0 +1,298 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "description": "Small-multiple TSX population trends for four monitored Australian fauna groups, 1985-2022.",
+  
+    "background": "white",
+  
+    "data": {
+      "url": "data/processed/tsx_fauna_trends.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "index": "number",
+          "low_index": "number",
+          "high_index": "number"
+        }
+      }
+    },
+  
+    "transform": [
+      {
+        "filter": "indexof(['Birds', 'Mammals', 'Reptiles', 'Amphibians'], datum.animal_group) >= 0"
+      },
+      {
+        "filter": "datum.year >= 1985 && datum.year <= 2022"
+      },
+      {
+        "filter": "isValid(datum.index) && isValid(datum.low_index) && isValid(datum.high_index)"
+      }
+    ],
+  
+    "facet": {
+      "field": "animal_group",
+      "type": "nominal",
+      "sort": [
+        "Birds",
+        "Mammals",
+        "Reptiles",
+        "Amphibians"
+      ],
+      "header": {
+        "title": null,
+        "labelFont": "Source Sans 3",
+        "labelFontSize": 17,
+        "labelFontWeight": "bold",
+        "labelColor": "#263D36",
+        "labelPadding": 13
+      }
+    },
+  
+    "columns": 2,
+  
+    "spec": {
+      "width": 420,
+      "height": 230,
+  
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "scale": {
+            "domain": [1985, 2022],
+            "nice": false
+          },
+          "axis": {
+            "title": null,
+            "values": [1985, 1995, 2005, 2015, 2022],
+            "format": "d",
+            "labelFontSize": 11,
+            "labelColor": "#63766A",
+            "labelPadding": 8,
+            "grid": false,
+            "tickSize": 0,
+            "domainColor": "#CBD8CC"
+          }
+        }
+      },
+  
+      "layer": [
+        {
+          "mark": {
+            "type": "area",
+            "opacity": 0.2,
+            "interpolate": "monotone"
+          },
+  
+          "encoding": {
+            "y": {
+              "field": "low_index",
+              "type": "quantitative",
+              "scale": {
+                "zero": true
+              },
+              "axis": {
+                "title": "Population index",
+                "titleFontSize": 12,
+                "titleColor": "#53685B",
+                "labelFontSize": 11,
+                "labelColor": "#63766A",
+                "gridColor": "#E5ECE5",
+                "domain": false,
+                "tickSize": 0
+              }
+            },
+  
+            "y2": {
+              "field": "high_index"
+            },
+  
+            "color": {
+              "field": "animal_group",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Birds",
+                  "Mammals",
+                  "Reptiles",
+                  "Amphibians"
+                ],
+                "range": [
+                  "#4B8269",
+                  "#B45F45",
+                  "#7B8E60",
+                  "#776B91"
+                ]
+              },
+              "legend": null
+            }
+          }
+        },
+  
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#9DAC9E",
+            "strokeDash": [5, 5],
+            "strokeWidth": 1.3
+          },
+  
+          "encoding": {
+            "x": {
+              "datum": 1985
+            },
+  
+            "x2": {
+              "datum": 2022
+            },
+  
+            "y": {
+              "datum": 100
+            }
+          }
+        },
+  
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 3.2,
+            "interpolate": "monotone"
+          },
+  
+          "encoding": {
+            "y": {
+              "field": "index",
+              "type": "quantitative"
+            },
+  
+            "color": {
+              "field": "animal_group",
+              "type": "nominal",
+              "scale": {
+                "domain": [
+                  "Birds",
+                  "Mammals",
+                  "Reptiles",
+                  "Amphibians"
+                ],
+                "range": [
+                  "#4B8269",
+                  "#B45F45",
+                  "#7B8E60",
+                  "#776B91"
+                ]
+              },
+              "legend": null
+            },
+  
+            "tooltip": [
+              {
+                "field": "animal_group",
+                "type": "nominal",
+                "title": "Animal group"
+              },
+              {
+                "field": "year",
+                "type": "quantitative",
+                "format": "d",
+                "title": "Year"
+              },
+              {
+                "field": "index",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Population index"
+              },
+              {
+                "field": "low_index",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Lower estimate"
+              },
+              {
+                "field": "high_index",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Upper estimate"
+              }
+            ]
+          }
+        },
+  
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 110,
+            "opacity": 0.01
+          },
+  
+          "encoding": {
+            "y": {
+              "field": "index",
+              "type": "quantitative"
+            },
+  
+            "tooltip": [
+              {
+                "field": "animal_group",
+                "type": "nominal",
+                "title": "Animal group"
+              },
+              {
+                "field": "year",
+                "type": "quantitative",
+                "title": "Year",
+                "format": "d"
+              },
+              {
+                "field": "index",
+                "type": "quantitative",
+                "title": "Population index",
+                "format": ".1f"
+              },
+              {
+                "field": "low_index",
+                "type": "quantitative",
+                "title": "Lower estimate",
+                "format": ".1f"
+              },
+              {
+                "field": "high_index",
+                "type": "quantitative",
+                "title": "Upper estimate",
+                "format": ".1f"
+              }
+            ]
+          }
+        }
+      ]
+    },
+  
+    "resolve": {
+      "scale": {
+        "y": "shared",
+        "color": "shared"
+      }
+    },
+  
+    "config": {
+      "font": "Source Sans 3",
+  
+      "facet": {
+        "spacing": 30
+      },
+  
+      "view": {
+        "stroke": null
+      },
+  
+      "axis": {
+        "labelFont": "Source Sans 3",
+        "titleFont": "Source Sans 3"
+      }
+    }
+  }
+  

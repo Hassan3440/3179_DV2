@@ -1,0 +1,117 @@
+
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 780,
+  "height": 610,
+
+  "projection": {
+    "type": "mercator",
+    "center": [147, -33.5],
+    "scale": 2100,
+    "translate": [500, 300],
+    "clipExtent": [
+      [0, 0],
+      [780, 610]
+    ]
+  },
+
+  "params": [
+    {
+      "name": "selectedRegion",
+      "value": "Both states",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Both states",
+          "NSW",
+          "VIC"
+        ],
+        "name": "Show fire footprints in: "
+      }
+    }
+  ],
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/geo/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#F1F4ED",
+        "stroke": "#98B1A3",
+        "strokeWidth": 0.8,
+        "clip": true
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/processed/chart07_fire_extent.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "fire_extent"
+        }
+      },
+
+      "transform": [
+        {
+          "filter": "selectedRegion === 'Both states' || datum.properties.State === selectedRegion"
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "opacity": 0.83,
+        "stroke": "#873D30",
+        "strokeWidth": 0.25,
+        "clip": true
+      },
+
+      "encoding": {
+        "color": {
+          "field": "properties.State",
+          "type": "nominal",
+          "scale": {
+            "domain": ["NSW", "VIC"],
+            "range": [
+              "#B9583A",
+              "#DE986A"
+            ]
+          },
+          "legend": {
+            "title": "Mapped fire footprints",
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "properties.State",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.caption",
+            "type": "nominal",
+            "title": "Coverage"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    }
+  }
+}

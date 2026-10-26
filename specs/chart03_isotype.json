@@ -1,96 +1,125 @@
 
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
-    "data": {
-      "url": "data/processed/chart03_isotype.csv"
-    },
-  
-    "facet": {
-      "field": "animal_group",
-      "type": "nominal",
-  
-      "sort": [
-        "Birds",
-        "Mammals",
-        "Reptiles",
-        "Amphibians",
-        "Fish",
-        "Invertebrates"
-      ],
-  
-      "header": {
-        "title": null,
-        "labelFontSize": 14,
-        "labelColor": "#263D36"
-      }
-    },
-  
-    "columns": 3,
-    "spacing": 24,
-  
-    "spec": {
-      "width": 210,
-      "height": 165,
-  
-      "mark": {
-        "type": "circle",
-        "size": 120
-      },
-  
-      "encoding": {
-        "x": {
-          "field": "dot_col",
-          "type": "quantitative",
-          "scale": {"domain": [0, 11]},
-          "axis": null
-        },
-  
-        "y": {
-          "field": "dot_row",
-          "type": "quantitative",
-          "scale": {"domain": [0, 11]},
-          "axis": null
-        },
-  
-        "color": {
-          "condition": {
-            "test": "datum.dot_status === 'Critical' || datum.dot_status === 'Critically Endangered'",
-            "value": "#713648"
-          },
-          "value": "#DFE7E0"
-        },
-  
-        "tooltip": [
-          {
-            "field": "animal_group",
-            "title": "Animal group"
-          },
-          {
-            "field": "critical_count",
-            "type": "quantitative",
-            "title": "Critically Endangered"
-          },
-          {
-            "field": "group_total",
-            "type": "quantitative",
-            "title": "Total threatened"
-          },
-          {
-            "field": "critical_pct",
-            "type": "quantitative",
-            "title": "Percentage (%)",
-            "format": ".1f"
-          }
-        ]
-      }
-    },
-  
-    "config": {
-      "font": "Source Sans 3",
-      "view": {
-        "stroke": null
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Percentage of threatened fauna taxa classified as Critically Endangered, shown as 100-dot isotypes.",
+  "background": "white",
+
+  "data": {
+    "url": "data/processed/chart03_isotype.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "group_order": "number",
+        "dot_col": "number",
+        "dot_row": "number",
+        "critical_count": "number",
+        "group_total": "number",
+        "critical_pct": "number"
       }
     }
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.dot_status === 'Critical' || datum.dot_status === 'Critically Endangered'",
+      "as": "is_critical"
+    }
+  ],
+
+  "facet": {
+    "field": "panel_label",
+    "type": "nominal",
+    "sort": {
+      "field": "group_order",
+      "op": "min",
+      "order": "ascending"
+    },
+    "header": {
+      "title": null,
+      "labelFont": "Source Sans 3",
+      "labelFontSize": 15,
+      "labelFontWeight": "bold",
+      "labelColor": "#263D36",
+      "labelPadding": 9
+    }
+  },
+
+  "columns": 3,
+  "spacing": 24,
+
+  "spec": {
+    "width": 205,
+    "height": 170,
+
+    "mark": {
+      "type": "circle",
+      "size": 100,
+      "opacity": 0.96
+    },
+
+    "encoding": {
+      "x": {
+        "field": "dot_col",
+        "type": "ordinal",
+        "sort": "ascending",
+        "axis": null,
+        "scale": {
+          "paddingInner": 0.12,
+          "paddingOuter": 0.1
+        }
+      },
+
+      "y": {
+        "field": "dot_row",
+        "type": "ordinal",
+        "sort": "descending",
+        "axis": null,
+        "scale": {
+          "paddingInner": 0.1,
+          "paddingOuter": 0.08
+        }
+      },
+
+      "color": {
+        "condition": {
+          "test": "datum.is_critical",
+          "value": "#713648"
+        },
+        "value": "#DDE8E2"
+      },
+
+      "tooltip": [
+        {
+          "field": "animal_group",
+          "type": "nominal",
+          "title": "Animal group"
+        },
+        {
+          "field": "critical_count",
+          "type": "quantitative",
+          "title": "Critically Endangered taxa",
+          "format": ",d"
+        },
+        {
+          "field": "group_total",
+          "type": "quantitative",
+          "title": "All threatened taxa",
+          "format": ",d"
+        },
+        {
+          "field": "critical_pct",
+          "type": "quantitative",
+          "title": "Critically Endangered (%)",
+          "format": ".1f"
+        }
+      ]
+    }
+  },
+
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    }
   }
-  
+}

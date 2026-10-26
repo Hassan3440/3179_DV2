@@ -1,0 +1,330 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+    "description": "Historical expansion of Australia's terrestrial protected areas, 2004 to 2024, showing coverage and growth between CAPAD reporting years.",
+  
+    "background": "white",
+  
+    "data": {
+      "url": "data/processed/chart12_protected_history.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "year": "number",
+          "coverage_pct": "number",
+          "gain_pp": "number"
+        }
+      }
+    },
+  
+    "spacing": 35,
+  
+    "vconcat": [
+      {
+        "width": 790,
+        "height": 280,
+  
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "scale": {
+              "domain": [2003, 2025],
+              "nice": false
+            },
+            "axis": null
+          },
+  
+          "y": {
+            "field": "coverage_pct",
+            "type": "quantitative",
+            "scale": {
+              "domain": [0, 27],
+              "nice": false
+            },
+            "axis": {
+              "title": "Australian landmass protected (%)",
+              "titleColor": "#3D5B4B",
+              "titleFontSize": 12,
+              "titlePadding": 12,
+              "labelColor": "#697F71",
+              "labelFontSize": 11,
+              "values": [0, 5, 10, 15, 20, 25],
+              "gridColor": "#E4EBE4",
+              "domain": false,
+              "tickSize": 0,
+              "labelPadding": 6
+            }
+          }
+        },
+  
+        "layer": [
+          {
+            "mark": {
+              "type": "area",
+              "interpolate": "linear",
+              "color": "#B2CEB9",
+              "opacity": 0.26
+            }
+          },
+  
+          {
+            "mark": {
+              "type": "line",
+              "interpolate": "linear",
+              "color": "#386D56",
+              "strokeWidth": 3.5
+            }
+          },
+  
+          {
+            "mark": {
+              "type": "point",
+              "filled": true,
+              "size": 115,
+              "color": "#386D56",
+              "stroke": "white",
+              "strokeWidth": 2
+            },
+  
+            "encoding": {
+              "tooltip": [
+                {
+                  "field": "year",
+                  "type": "quantitative",
+                  "title": "CAPAD reporting year",
+                  "format": "d"
+                },
+                {
+                  "field": "coverage_pct",
+                  "type": "quantitative",
+                  "title": "Land protected (%)",
+                  "format": ".2f"
+                },
+                {
+                  "field": "gain_pp",
+                  "type": "quantitative",
+                  "title": "Change since previous report (pp)",
+                  "format": "+.2f"
+                }
+              ]
+            }
+          },
+  
+          {
+            "transform": [
+              {
+                "filter": "datum.year === 2024"
+              }
+            ],
+  
+            "mark": {
+              "type": "point",
+              "filled": true,
+              "size": 240,
+              "color": "#B45F45",
+              "stroke": "white",
+              "strokeWidth": 3
+            },
+  
+            "encoding": {
+              "tooltip": [
+                {
+                  "field": "year",
+                  "type": "quantitative",
+                  "title": "Reporting year",
+                  "format": "d"
+                },
+                {
+                  "field": "coverage_pct",
+                  "type": "quantitative",
+                  "title": "Protected land (%)",
+                  "format": ".2f"
+                }
+              ]
+            }
+          },
+  
+          {
+            "transform": [
+              {
+                "filter": "datum.year === 2004 || datum.year === 2024"
+              },
+              {
+                "calculate": "format(datum.coverage_pct, '.2f') + '%'",
+                "as": "point_label"
+              }
+            ],
+  
+            "mark": {
+              "type": "text",
+              "font": "Source Sans 3",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "color": "#263D36",
+              "dy": -20
+            },
+  
+            "encoding": {
+              "text": {
+                "field": "point_label",
+                "type": "nominal"
+              }
+            }
+          }
+        ]
+      },
+  
+      {
+        "title": {
+          "text": "Increase since previous CAPAD report",
+          "anchor": "start",
+          "color": "#263D36",
+          "font": "Source Sans 3",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "offset": 12
+        },
+  
+        "width": 790,
+        "height": 125,
+  
+        "transform": [
+          {
+            "filter": "datum.year > 2004"
+          }
+        ],
+  
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "quantitative",
+            "scale": {
+              "domain": [2003, 2025],
+              "nice": false
+            },
+            "axis": {
+              "title": "CAPAD reporting year",
+              "titlePadding": 14,
+              "titleColor": "#50685A",
+              "labelColor": "#697F71",
+              "labelFontSize": 12,
+              "values": [2004, 2008, 2012, 2016, 2020, 2024],
+              "format": "d",
+              "labelAngle": 0,
+              "grid": false,
+              "domainColor": "#C9D8CC",
+              "tickSize": 0,
+              "labelPadding": 7
+            }
+          },
+  
+          "y": {
+            "field": "gain_pp",
+            "type": "quantitative",
+            "scale": {
+              "domain": [0, 3],
+              "nice": false
+            },
+            "axis": {
+              "title": "Gain (pp)",
+              "titleColor": "#50685A",
+              "titleFontSize": 12,
+              "titlePadding": 12,
+              "labelColor": "#697F71",
+              "values": [0, 1, 2, 3],
+              "gridColor": "#E4EBE4",
+              "domain": false,
+              "tickSize": 0
+            }
+          }
+        },
+  
+        "layer": [
+          {
+            "mark": {
+              "type": "bar",
+              "size": 35,
+              "cornerRadiusTopLeft": 4,
+              "cornerRadiusTopRight": 4
+            },
+  
+            "encoding": {
+              "color": {
+                "condition": {
+                  "test": "datum.gain_pp >= 2.3",
+                  "value": "#B45F45"
+                },
+                "value": "#85A995"
+              },
+  
+              "tooltip": [
+                {
+                  "field": "year",
+                  "type": "quantitative",
+                  "title": "Reporting year",
+                  "format": "d"
+                },
+                {
+                  "field": "gain_pp",
+                  "type": "quantitative",
+                  "title": "Gain since previous report (pp)",
+                  "format": "+.2f"
+                },
+                {
+                  "field": "coverage_pct",
+                  "type": "quantitative",
+                  "title": "Total protected (%)",
+                  "format": ".2f"
+                }
+              ]
+            }
+          },
+  
+          {
+            "transform": [
+              {
+                "filter": "datum.gain_pp >= 2.3"
+              }
+            ],
+  
+            "mark": {
+              "type": "text",
+              "font": "Source Sans 3",
+              "fontSize": 12,
+              "fontWeight": "bold",
+              "color": "#A8543C",
+              "dy": -10
+            },
+  
+            "encoding": {
+              "text": {
+                "field": "gain_pp",
+                "type": "quantitative",
+                "format": "+.2f"
+              }
+            }
+          }
+        ]
+      }
+    ],
+  
+    "resolve": {
+      "scale": {
+        "x": "shared"
+      }
+    },
+  
+    "config": {
+      "font": "Source Sans 3",
+      "view": {
+        "stroke": null
+      },
+      "axis": {
+        "labelFont": "Source Sans 3",
+        "titleFont": "Source Sans 3"
+      }
+    }
+  }
+  

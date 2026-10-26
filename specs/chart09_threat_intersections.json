@@ -1,277 +1,301 @@
 
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Top 12 overlapping threat combinations for Australian fauna.",
-    "background": "white",
-  
-    "data": {
-      "url": "data/processed/chart09_threat_intersections.csv",
-      "format": {
-        "type": "csv",
-        "parse": {
-          "rank": "number",
-          "threat_index": "number",
-          "included": "number",
-          "taxa_count": "number",
-          "percent_of_456": "number",
-          "threat_count": "number"
-        }
-      }
-    },
-  
-    "spacing": 9,
-  
-    "vconcat": [
-      {
-        "width": 790,
-        "height": 215,
-  
-        "transform": [
-          {
-            "filter": "datum.threat_index === 1"
-          }
-        ],
-  
-        "encoding": {
-          "x": {
-            "field": "rank",
-            "type": "ordinal",
-            "sort": "ascending",
-            "axis": null,
-            "scale": {
-              "paddingInner": 0.18,
-              "paddingOuter": 0.1
-            }
-          },
-  
-          "y": {
-            "field": "taxa_count",
-            "type": "quantitative",
-            "scale": {
-              "domain": [0, 75]
-            },
-            "axis": {
-              "title": "Number of taxa",
-              "gridColor": "#DFE7DE",
-              "labelColor": "#53675F",
-              "titleColor": "#354C42",
-              "domain": false,
-              "tickSize": 0,
-              "tickCount": 5
-            }
-          }
-        },
-  
-        "layer": [
-          {
-            "mark": {
-              "type": "bar",
-              "cornerRadiusTopLeft": 5,
-              "cornerRadiusTopRight": 5
-            },
-  
-            "encoding": {
-              "color": {
-                "condition": {
-                  "test": "datum.rank === 1",
-                  "value": "#B45F45"
-                },
-                "value": "#467764"
-              },
-  
-              "tooltip": [
-                {
-                  "field": "combination",
-                  "type": "nominal",
-                  "title": "Threat combination"
-                },
-                {
-                  "field": "taxa_count",
-                  "type": "quantitative",
-                  "title": "Fauna taxa"
-                },
-                {
-                  "field": "percent_of_456",
-                  "type": "quantitative",
-                  "title": "Share of taxa (%)"
-                }
-              ]
-            }
-          },
-  
-          {
-            "mark": {
-              "type": "text",
-              "dy": -10,
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "color": "#263D36"
-            },
-  
-            "encoding": {
-              "text": {
-                "field": "taxa_count",
-                "type": "quantitative",
-                "format": ",d"
-              }
-            }
-          }
-        ]
-      },
-  
-      {
-        "width": 790,
-        "height": 218,
-  
-        "encoding": {
-          "x": {
-            "field": "rank",
-            "type": "ordinal",
-            "sort": "ascending",
-            "scale": {
-              "paddingInner": 0.18,
-              "paddingOuter": 0.1
-            },
-            "axis": {
-              "title": "Threat combinations ranked 1–12",
-              "labelFontSize": 12,
-              "labelPadding": 8,
-              "titlePadding": 16,
-              "domain": false,
-              "tickSize": 0
-            }
-          },
-  
-          "y": {
-            "field": "threat",
-            "type": "ordinal",
-            "sort": [
-              "Habitat loss",
-              "Invasives & disease",
-              "Adverse fire",
-              "Climate / weather",
-              "Water changes"
-            ],
-            "axis": {
-              "title": null,
-              "labelFontSize": 13,
-              "labelFontWeight": 600,
-              "labelColor": "#354C42",
-              "labelPadding": 10,
-              "labelLimit": 170,
-              "domain": false,
-              "ticks": false
-            }
-          }
-        },
-  
-        "layer": [
-          {
-            "mark": {
-              "type": "rect",
-              "fill": "#F6F8F4",
-              "stroke": "#FFFFFF",
-              "strokeWidth": 4,
-              "cornerRadius": 4
-            }
-          },
-  
-          {
-            "transform": [
-              {
-                "filter": "datum.included === 1 && datum.threat_count > 1"
-              }
-            ],
-  
-            "mark": {
-              "type": "line",
-              "stroke": "#376756",
-              "strokeWidth": 3
-            },
-  
-            "encoding": {
-              "detail": {
-                "field": "rank",
-                "type": "nominal"
-              },
-              "order": {
-                "field": "threat_index",
-                "type": "quantitative"
-              }
-            }
-          },
-  
-          {
-            "mark": {
-              "type": "circle"
-            },
-  
-            "encoding": {
-              "size": {
-                "condition": {
-                  "test": "datum.included === 1",
-                  "value": 175
-                },
-                "value": 52
-              },
-  
-              "color": {
-                "condition": [
-                  {
-                    "test": "datum.rank === 1 && datum.included === 1",
-                    "value": "#B45F45"
-                  },
-                  {
-                    "test": "datum.included === 1",
-                    "value": "#315E50"
-                  }
-                ],
-                "value": "#C6D0C8"
-              },
-  
-              "tooltip": [
-                {
-                  "field": "combination",
-                  "type": "nominal",
-                  "title": "Combination"
-                },
-                {
-                  "field": "threat",
-                  "type": "nominal",
-                  "title": "Threat"
-                },
-                {
-                  "field": "included_label",
-                  "type": "nominal",
-                  "title": "Recorded?"
-                },
-                {
-                  "field": "taxa_count",
-                  "type": "quantitative",
-                  "title": "Fauna taxa"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    ],
-  
-    "resolve": {
-      "scale": {
-        "x": "shared"
-      }
-    },
-  
-    "config": {
-      "font": "Source Sans 3",
-      "view": {
-        "stroke": null
-      },
-      "axis": {
-        "labelFont": "Source Sans 3",
-        "titleFont": "Source Sans 3"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 12 exact combinations of five selected threats among 456 assessed Australian fauna taxa.",
+
+  "background": "white",
+
+  "padding": {
+    "left": 140,
+    "right": 20,
+    "top": 15,
+    "bottom": 35
+  },
+
+  "data": {
+    "url": "data/processed/chart09_threat_intersections.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "rank": "number",
+        "taxa_count": "number",
+        "percent_of_456": "number",
+        "threat_index": "number",
+        "included": "number",
+        "threat_count": "number"
       }
     }
+  },
+
+  "spacing": 10,
+
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 205,
+
+      "transform": [
+        {
+          "filter": "datum.threat_index === 1"
+        }
+      ],
+
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "ordinal",
+          "sort": "ascending",
+          "axis": null,
+          "scale": {
+            "paddingInner": 0.18,
+            "paddingOuter": 0.1
+          }
+        },
+
+        "y": {
+          "field": "taxa_count",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 75]
+          },
+          "axis": {
+            "title": "Number of taxa",
+            "titleColor": "#354C42",
+            "labelColor": "#53675F",
+            "gridColor": "#DFE7DE",
+            "domain": false,
+            "tickSize": 0,
+            "titlePadding": 14,
+            "tickCount": 5
+          }
+        }
+      },
+
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "cornerRadiusTopLeft": 5,
+            "cornerRadiusTopRight": 5
+          },
+
+          "encoding": {
+            "color": {
+              "condition": {
+                "test": "datum.rank === 1",
+                "value": "#B45F45"
+              },
+              "value": "#467764"
+            },
+
+            "tooltip": [
+              {
+                "field": "combination",
+                "type": "nominal",
+                "title": "Threat combination"
+              },
+              {
+                "field": "taxa_count",
+                "type": "quantitative",
+                "title": "Number of fauna taxa",
+                "format": ",d"
+              },
+              {
+                "field": "percent_of_456",
+                "type": "quantitative",
+                "title": "Share of 456 taxa (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "threat_count",
+                "type": "quantitative",
+                "title": "Number of threats"
+              }
+            ]
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "dy": -10,
+            "font": "Source Sans 3",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "color": "#263D36"
+          },
+
+          "encoding": {
+            "text": {
+              "field": "taxa_count",
+              "type": "quantitative",
+              "format": ",d"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "width": 600,
+      "height": 235,
+
+      "encoding": {
+        "x": {
+          "field": "rank",
+          "type": "ordinal",
+          "sort": "ascending",
+          "scale": {
+            "paddingInner": 0.18,
+            "paddingOuter": 0.1
+          },
+
+          "axis": {
+            "title": "Threat combinations ranked 1–12",
+            "labelFontSize": 12,
+            "labelColor": "#526960",
+            "labelPadding": 8,
+            "titleFontSize": 12,
+            "titlePadding": 15,
+            "titleColor": "#526960",
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+
+        "y": {
+          "field": "threat",
+          "type": "ordinal",
+          "sort": [
+            "Habitat loss",
+            "Invasives & disease",
+            "Adverse fire",
+            "Climate / weather",
+            "Water changes"
+          ],
+
+          "axis": {
+            "title": null,
+            "labelFont": "Source Sans 3",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "labelColor": "#354C42",
+            "labelPadding": 10,
+            "labelLimit": 210,
+            "ticks": false,
+            "domain": false
+          }
+        }
+      },
+
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "fill": "#F6F8F4",
+            "stroke": "#FFFFFF",
+            "strokeWidth": 4,
+            "cornerRadius": 4
+          }
+        },
+
+        {
+          "transform": [
+            {
+              "filter": "datum.included === 1 && datum.threat_count > 1"
+            }
+          ],
+
+          "mark": {
+            "type": "line",
+            "stroke": "#376756",
+            "strokeWidth": 3
+          },
+
+          "encoding": {
+            "detail": {
+              "field": "rank",
+              "type": "nominal"
+            },
+
+            "order": {
+              "field": "threat_index",
+              "type": "quantitative"
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "circle"
+          },
+
+          "encoding": {
+            "size": {
+              "condition": {
+                "test": "datum.included === 1",
+                "value": 170
+              },
+              "value": 50
+            },
+
+            "color": {
+              "condition": [
+                {
+                  "test": "datum.rank === 1 && datum.included === 1",
+                  "value": "#B45F45"
+                },
+                {
+                  "test": "datum.included === 1",
+                  "value": "#315E50"
+                }
+              ],
+              "value": "#C6D0C8"
+            },
+
+            "tooltip": [
+              {
+                "field": "combination",
+                "type": "nominal",
+                "title": "Combination"
+              },
+              {
+                "field": "threat",
+                "type": "nominal",
+                "title": "Threat"
+              },
+              {
+                "field": "included_label",
+                "type": "nominal",
+                "title": "Recorded?"
+              },
+              {
+                "field": "taxa_count",
+                "type": "quantitative",
+                "title": "Fauna taxa",
+                "format": ",d"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    }
   }
-  
+}

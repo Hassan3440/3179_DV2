@@ -1,112 +1,123 @@
-
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
-    "width": 850,
-    "height": 540,
-  
-    "projection": {
-      "type": "mercator"
-    },
-  
-    "params": [
-      {
-        "name": "selectedBird",
-        "value": "Swift Parrot",
-        "bind": {
-          "input": "select",
-          "options": [
-            "Swift Parrot",
-            "Regent Honeyeater",
-            "Orange-bellied Parrot"
-          ],
-          "name": "Select a bird: "
-        }
-      }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Hexagonal map of threatened Australian bird observation records.",
+  "width": 850,
+  "height": 540,
+  "projection": {
+    "type": "mercator",
+    "center": [
+      133,
+      -27
     ],
-  
-    "layer": [
-      {
-        "data": {
-          "url": "data/geo/australia_states.topojson",
-          "format": {
-            "type": "topojson",
-            "feature": "states"
-          }
-        },
-  
-        "mark": {
-          "type": "geoshape",
-          "fill": "#F0F3EC",
-          "stroke": "#A7B6AA",
-          "strokeWidth": 0.8
-        }
-      },
-  
-      {
-        "data": {
-          "url": "data/processed/chart05_hexagons.topojson",
-          "format": {
-            "type": "topojson",
-            "feature": "hexagons"
-          }
-        },
-  
-        "transform": [
-          {
-            "filter": "datum.properties.species === selectedBird"
-          }
-        ],
-  
-        "mark": {
-          "type": "geoshape",
-          "stroke": "white",
-          "strokeWidth": 0.6
-        },
-  
-        "encoding": {
-          "color": {
-            "field": "properties.observations",
-            "type": "quantitative",
-  
-            "scale": {
-              "type": "sqrt",
-              "domain": [0, 1300],
-              "range": [
-                "#D9E9DA",
-                "#176247"
-              ]
-            },
-  
-            "legend": {
-              "title": "Observation records per hexagon",
-              "orient": "bottom",
-              "gradientLength": 270
-            }
-          },
-  
-          "tooltip": [
-            {
-              "field": "properties.species",
-              "type": "nominal",
-              "title": "Bird species"
-            },
-            {
-              "field": "properties.observations",
-              "type": "quantitative",
-              "title": "Observation records",
-              "format": ",d"
-            }
-          ]
-        }
-      }
-    ],
-  
-    "config": {
-      "font": "Source Sans 3",
-      "view": {
-        "stroke": null
+    "scale": 770,
+    "translate": [
+      490,
+      265
+    ]
+  },
+  "params": [
+    {
+      "name": "selectedBird",
+      "value": "Swift Parrot",
+      "bind": {
+        "input": "select",
+        "name": "Select a bird: ",
+        "options": [
+          "Swift Parrot",
+          "Regent Honeyeater",
+          "Orange-bellied Parrot"
+        ]
       }
     }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/geo/australia_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#F0F3EC",
+        "stroke": "#A7B6AA",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "data": {
+        "url": "data/processed/chart05_hexbin.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.species",
+          "as": "bird_name"
+        },
+        {
+          "calculate": "datum.properties.observations",
+          "as": "record_count"
+        },
+        {
+          "filter": "datum.bird_name === selectedBird"
+        },
+        {
+          "filter": "datum.record_count > 0"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.35,
+        "opacity": 0.97
+      },
+      "encoding": {
+        "color": {
+          "field": "record_count",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              0,
+              1300
+            ],
+            "range": [
+              "#9BC7AD",
+              "#155B40"
+            ]
+          },
+          "legend": {
+            "title": "Observation records / hexagon",
+            "orient": "bottom",
+            "gradientLength": 230,
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {
+            "field": "bird_name",
+            "type": "nominal",
+            "title": "Bird species"
+          },
+          {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Observation records",
+            "format": ",d"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "view": {
+      "stroke": null
+    }
   }
-  
+}

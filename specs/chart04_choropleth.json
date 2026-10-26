@@ -1,7 +1,5 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "data": {
     "url": "data/geo/australia_states.topojson",
     "format": {
@@ -9,24 +7,29 @@
       "feature": "states"
     }
   },
-
   "width": 850,
   "height": 540,
-
   "projection": {
-    "type": "mercator"
+    "type": "mercator",
+    "center": [
+      133,
+      -27
+    ],
+    "scale": 770,
+    "translate": [
+      490,
+      265
+    ]
   },
-
   "layer": [
     {
       "mark": {
         "type": "geoshape",
-        "fill": "#DFE6DF",
+        "fill": "#E0EAE0",
         "stroke": "white",
         "strokeWidth": 1
       }
     },
-
     {
       "transform": [
         {
@@ -53,37 +56,37 @@
             ]
           }
         },
-
         {
           "filter": "isValid(datum.taxa_per_area)"
         }
       ],
-
       "mark": {
         "type": "geoshape",
         "stroke": "white",
         "strokeWidth": 1
       },
-
       "encoding": {
         "color": {
           "field": "taxa_per_area",
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "domain": [6, 2300],
+            "domain": [
+              6,
+              2300
+            ],
             "range": [
-              "#E7F0E7",
-              "#174B3A"
+              "#C7DCCB",
+              "#154B39"
             ]
           },
           "legend": {
             "title": "Taxa per 100,000 km²",
             "orient": "bottom",
-            "gradientLength": 300
+            "gradientLength": 225,
+            "labelFontSize": 11
           }
         },
-
         "tooltip": [
           {
             "field": "state_name",
@@ -93,7 +96,8 @@
           {
             "field": "listed_taxa",
             "type": "quantitative",
-            "title": "Threatened taxa"
+            "title": "Threatened taxa",
+            "format": ",d"
           },
           {
             "field": "area_km2",
@@ -111,7 +115,6 @@
       }
     }
   ],
-
   "config": {
     "font": "Source Sans 3",
     "view": {

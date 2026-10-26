@@ -6,16 +6,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Australia's Vanishing Wildlife</title>
+    <meta name="description"
+          content="Australia's Vanishing Wildlife: an interactive data visualisation exploring threatened animals, population declines, environmental pressures and conservation progress in Australia.">
 
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Source+Sans+3:wght@400;600;700&display=swap"
-        rel="stylesheet"
-    >
+    <title>Australia's Vanishing Wildlife | An Interactive Field Guide</title>
 
-    <!-- Main CSS, including Chart 9 styles -->
-    <link rel="stylesheet" href="style.css?v=10">
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Existing project stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Layout styles for concluding chapters -->
+    <style>
+
+        .threat-gallery,
+        .future-gallery {
+            margin: 56px 0;
+            padding-top: 34px;
+            border-top: 1px solid #d9ded5;
+        }
+
+        .threat-gallery > p:not(.label),
+        .future-gallery > p:not(.label) {
+            max-width: 760px;
+        }
+
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 26px;
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-top: 26px;
+        }
+
+        .threat-card,
+        .future-card {
+            margin: 0;
+            background: #fff;
+            border: 1px solid #dce4dd;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .threat-card img,
+        .future-card img {
+            display: block;
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+        }
+
+        .future-card img {
+            height: 255px;
+        }
+
+        .threat-card figcaption,
+        .future-card figcaption {
+            display: grid;
+            gap: 9px;
+            padding: 18px;
+        }
+
+        .threat-card strong,
+        .future-card strong {
+            color: #28463b;
+        }
+
+        .threat-card span,
+        .future-card span {
+            line-height: 1.55;
+        }
+
+        .threat-card small,
+        .future-card small {
+            color: #647b6e;
+            line-height: 1.5;
+        }
+
+        /* CHART 10 */
+
+        .viz10-layout {
+            display: grid;
+            grid-template-columns: 1.75fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+            margin-top: 26px;
+        }
+
+        .viz10-main {
+            min-width: 0;
+            padding: 18px;
+            background: white;
+            border: 1px solid #dce4dd;
+            border-radius: 13px;
+        }
+
+        .viz10-main .chart {
+            margin: 0;
+            border: 0;
+            box-shadow: none;
+            background: transparent;
+            padding: 0;
+        }
+
+        .viz10-side {
+            padding: 24px;
+            background: #f3f6f0;
+            border: 1px solid #dce4dd;
+            border-top: 4px solid #b85f43;
+            border-radius: 13px;
+        }
+
+        .viz10-kicker {
+            margin: 0 0 16px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            color: #b85f43;
+        }
+
+        .viz10-big {
+            display: block;
+            margin: 0 0 12px;
+            font-family: Fraunces, Georgia, serif;
+            font-size: clamp(44px, 5vw, 72px);
+            line-height: 1.1;
+            color: #b85f43;
+        }
+
+        .viz10-side > p {
+            line-height: 1.6;
+        }
+
+        .viz10-breakdown {
+            margin-top: 24px;
+            border-top: 1px solid #dce5dc;
+            padding-top: 15px;
+        }
+
+        .viz10-breakdown-title {
+            font-size: 12px;
+            letter-spacing: .1em;
+            font-weight: 700;
+            color: #60776b;
+        }
+
+        .viz10-breakdown-row {
+            display: grid;
+            grid-template-columns: 12px 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px solid #e0e7df;
+            color: #324b40;
+        }
+
+        .viz10-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .viz10-breakdown-row strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .viz10-breakdown-row small {
+            display: block;
+            color: #71867b;
+        }
+
+        .viz10-percent {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* CHART 11 */
+
+        .viz11-guide,
+        .viz12-guide,
+        .viz13-guide {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 22px;
+            margin: 22px 0;
+            font-size: 13px;
+            color: #5f786d;
+        }
+
+        .viz11-guide span,
+        .viz12-guide span,
+        .viz13-guide span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .viz11-insights {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        .viz11-insight {
+            padding: 17px;
+            border-radius: 11px;
+            border: 1px solid #dce4dd;
+            border-top: 4px solid var(--group-color, #4e806d);
+            background: #f5f7f2;
+        }
+
+        .viz11-insight small {
+            display: block;
+            font-weight: 700;
+            letter-spacing: .06em;
+            color: #60786d;
+            text-transform: uppercase;
+        }
+
+        .viz11-insight strong {
+            display: block;
+            margin: 9px 0 5px;
+            font-family: Fraunces, Georgia, serif;
+            font-size: clamp(25px, 2.6vw, 39px);
+            color: #345f4e;
+        }
+
+        .viz11-insight span {
+            font-size: 12px;
+            color: #6e8178;
+            line-height: 1.4;
+        }
+
+        .viz11-note {
+            margin: 16px 0 24px;
+            padding: 16px 18px;
+            background: #f4f0e9;
+            border: 1px solid #e6ded2;
+            border-radius: 10px;
+            line-height: 1.65;
+        }
+
+        /* CHART 12 */
+
+        .viz12-stats,
+        .viz13-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin: 24px 0 32px;
+        }
+
+        .viz12-stat,
+        .viz13-stat {
+            padding: 22px 20px;
+            border: 1px solid #dce4dd;
+            border-top: 4px solid #7fa18e;
+            border-radius: 11px;
+            background: #f4f7f1;
+        }
+
+        .viz12-stat.accent,
+        .viz13-stat.accent {
+            background: #f6ebe6;
+            border-color: #ead4c9;
+            border-top-color: #b85f43;
+        }
+
+        .viz12-stat small,
+        .viz13-stat small {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: #6a8377;
+        }
+
+        .viz12-stat strong,
+        .viz13-stat strong {
+            display: block;
+            margin: 13px 0 8px;
+            font-family: Fraunces, Georgia, serif;
+            font-size: clamp(28px, 3.1vw, 45px);
+            line-height: 1.1;
+            color: #28463b;
+        }
+
+        .viz12-stat.accent strong,
+        .viz13-stat.accent strong {
+            color: #b85f43;
+        }
+
+        .viz12-stat span,
+        .viz13-stat span {
+            color: #6a8176;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .viz12-context {
+            margin: 28px 0;
+            padding: 20px 24px;
+            border-left: 4px solid #829c8c;
+            background: #edf2ea;
+        }
+
+        .viz12-context h4 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #29463b;
+        }
+
+        /* CHART 13 */
+
+        .viz13-summary {
+            margin: 24px 0;
+            padding: 22px 25px;
+            border-left: 4px solid #b85f43;
+            background: #f3ece6;
+            border-radius: 0 10px 10px 0;
+            color: #364f44;
+            line-height: 1.65;
+        }
+
+        .viz13-summary strong {
+            color: #a84f39;
+        }
+
+        .final-message {
+            margin: 65px 0 20px;
+            padding: 40px 32px;
+            text-align: center;
+            background: #e4ece3;
+            border: 1px solid #cbdacf;
+            border-radius: 16px;
+        }
+
+        .final-message h2 {
+            max-width: 700px;
+            margin: 10px auto 20px;
+            color: #29463b;
+        }
+
+        .final-message p:not(.label) {
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.75;
+        }
+
+        .method-note {
+            margin: 36px 0;
+            color: #687e73;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+
+            .viz10-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .viz11-insights {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .viz12-stats,
+            .viz13-stats {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .threat-grid,
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .threat-card img,
+            .future-card img {
+                height: 220px;
+            }
+
+            .final-message {
+                padding: 28px 18px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -23,9 +420,9 @@
 
 <main class="page">
 
-    <!-- ========================================
+    <!-- ==========================================
          INTRODUCTION
-         ======================================== -->
+         ========================================== -->
 
     <header class="hero">
 
@@ -49,14 +446,13 @@
                 <p class="intro">
                     Australia is home to extraordinary wildlife,
                     much of it found nowhere else on Earth.
-                    But many native animals now face an
-                    uncertain future.
+                    But many native animals now face an uncertain future.
                 </p>
 
                 <p>
                     Explore which animals are most at risk,
-                    where they are found, and the challenges
-                    facing their protection.
+                    where they are found, the pressures they face,
+                    and Australia's progress towards conservation.
                 </p>
 
                 <p class="small">
@@ -66,8 +462,6 @@
 
             </div>
 
-
-            <!-- Introduction fact card -->
             <aside class="hero-note">
 
                 <img
@@ -87,16 +481,17 @@
                 <p class="big-number">625</p>
 
                 <p>
-                    nationally listed threatened animal taxa
-                    across three EPBC conservation categories.
+                    Nationally listed threatened animal taxa
+                    across three EPBC conservation categories
+                    in this dataset.
                 </p>
 
                 <hr>
 
                 <p>
-                    <strong>43.4%</strong> of threatened
-                    invertebrate taxa are classified as
-                    Critically Endangered.
+                    <strong>43.4%</strong> of the threatened
+                    invertebrate taxa in the dataset are
+                    classified as Critically Endangered.
                 </p>
 
                 <p class="small">
@@ -108,35 +503,21 @@
 
         </div>
 
+        <nav class="chapters" aria-label="Explore the four chapters">
 
-        <!-- Chapter navigation -->
-        <nav class="chapters" aria-label="Dashboard sections">
-
-            <a href="#crisis">
-                01 / THE CRISIS
-            </a>
-
-            <a href="#geography">
-                02 / THE GEOGRAPHY
-            </a>
-
-            <a href="#threats">
-                03 / THE THREATS
-            </a>
-
-            <span>
-                04 / THE FUTURE
-            </span>
+            <a href="#crisis">01 / THE CRISIS</a>
+            <a href="#geography">02 / THE GEOGRAPHY</a>
+            <a href="#threats">03 / THE THREATS</a>
+            <a href="#future">04 / THE FUTURE</a>
 
         </nav>
 
     </header>
 
 
-
-    <!-- ========================================
-         CHAPTER 1: BIODIVERSITY CRISIS
-         ======================================== -->
+    <!-- ==========================================
+         CHAPTER 1: THE CRISIS
+         ========================================== -->
 
     <section id="crisis" class="chapter">
 
@@ -153,7 +534,8 @@
         </p>
 
 
-        <!-- CHART 1 -->
+        <!-- FIGURE 01 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -173,8 +555,9 @@
             <div id="chart1" class="chart"></div>
 
             <p class="hint">
-                Hover for exact values. Click an animal group
-                to highlight it and double-click to reset.
+                Hover for exact values.
+                Click an animal group to highlight it
+                and double-click to reset.
             </p>
 
             <p class="finding">
@@ -186,13 +569,15 @@
 
             <p class="source">
                 Source: EPBC Threatened Species Lists,
-                28 August 2026. Listed taxa can include subspecies.
+                28 August 2026.
+                Listed taxa can include subspecies.
             </p>
 
         </article>
 
 
-        <!-- CHART 2 -->
+        <!-- FIGURE 02 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -224,16 +609,18 @@
             </p>
 
             <p class="source">
-                Source: Threatened Species Index (TSX 2025),
-                Birds export. This is an index of monitored
-                populations, not a census of all Australian birds.
+                Source: Threatened Species Index
+                (TSX 2025), Birds export.
+                This index represents monitored populations,
+                not a census of all Australian birds.
                 The sample includes near-threatened taxa.
             </p>
 
         </article>
 
 
-        <!-- CHART 3 -->
+        <!-- FIGURE 03 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -247,8 +634,8 @@
             <p>
                 Each animal group contains 100 dots.
                 Dark purple dots show the approximate
-                percentage of its threatened taxa classified
-                as Critically Endangered.
+                percentage of its threatened taxa
+                classified as Critically Endangered.
             </p>
 
             <div id="chart3" class="chart"></div>
@@ -260,15 +647,17 @@
 
             <p class="finding">
                 <b>What stands out:</b>
-                43.4% of threatened invertebrate taxa are
-                Critically Endangered, compared with
-                approximately 8.0% of mammals.
+                43.4% of threatened invertebrate taxa
+                are Critically Endangered,
+                compared with approximately 8.0%
+                of threatened mammals.
             </p>
 
             <p class="source">
                 Source: EPBC Threatened Species Lists,
-                28 August 2026. Percentages are calculated
-                within each threatened animal group.
+                28 August 2026.
+                Percentages are calculated within
+                each threatened animal group.
             </p>
 
         </article>
@@ -276,10 +665,9 @@
     </section>
 
 
-
-    <!-- ========================================
-         WILDLIFE PHOTO GALLERY
-         ======================================== -->
+    <!-- ==========================================
+         WILDLIFE PHOTO BREAK
+         ========================================== -->
 
     <section class="wildlife">
 
@@ -290,14 +678,12 @@
         <h2>Meet the wildlife behind the data</h2>
 
         <p>
-            These animals help us understand what is at
-            stake when we talk about biodiversity loss.
+            These animals illustrate what is at stake
+            when we talk about Australia's biodiversity.
         </p>
-
 
         <div class="wildlife-grid">
 
-            <!-- Birdlife -->
             <article class="wildlife-card">
 
                 <img
@@ -322,26 +708,20 @@
 
                     <p class="fact">
                         <b>Did you know?</b>
-                        Our EPBC dataset includes 164
+                        The EPBC dataset includes 164
                         threatened bird taxa, including
                         18 that are Critically Endangered.
-                    </p>
-
-                    <p class="source">
-                        Photo attribution to be confirmed.
                     </p>
 
                 </div>
 
             </article>
 
-
-            <!-- Koala -->
             <article class="wildlife-card">
 
                 <img
                     src="images/images.jpeg"
-                    alt="Koala resting in a eucalyptus tree"
+                    alt="Koala resting in a tree"
                     loading="lazy"
                 >
 
@@ -360,13 +740,8 @@
 
                     <p class="fact">
                         <b>Did you know?</b>
-                        Koalas have specialised digestive
-                        systems that help them break down
-                        fibrous eucalyptus leaves.
-                    </p>
-
-                    <p class="source">
-                        Photo attribution to be confirmed.
+                        Koalas have specialised digestive systems
+                        that help process fibrous eucalyptus leaves.
                     </p>
 
                 </div>
@@ -378,10 +753,9 @@
     </section>
 
 
-
-    <!-- ========================================
+    <!-- ==========================================
          CHAPTER 2: GEOGRAPHY
-         ======================================== -->
+         ========================================== -->
 
     <section id="geography" class="chapter">
 
@@ -400,7 +774,8 @@
         </p>
 
 
-        <!-- CHART 4 -->
+        <!-- FIGURE 04 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -414,9 +789,8 @@
 
             <p>
                 This map compares the number of nationally
-                listed threatened animal taxa per 100,000 km²
-                of state or territory land area.
-
+                listed threatened animal taxa per
+                100,000 km² of state or territory land area.
                 Darker colours represent higher
                 area-normalised values.
             </p>
@@ -426,7 +800,6 @@
             <p class="hint">
                 Hover over each state to see its original count,
                 land area and normalised value.
-
                 The colour legend uses a logarithmic scale
                 because the ACT is much smaller than
                 the other jurisdictions.
@@ -434,28 +807,27 @@
 
             <p class="finding">
                 <b>What stands out:</b>
-                Tasmania has approximately 163.7 listed
-                threatened taxa per 100,000 km²,
-                much higher than many mainland states.
-
+                Tasmania has approximately 163.7
+                listed threatened taxa per 100,000 km²,
+                higher than many mainland states.
                 The ACT has an especially large ratio
                 because its land area is very small.
-
                 These figures do not directly measure
                 animal abundance or conservation risk.
             </p>
 
             <p class="source">
-                Sources: EPBC Threatened Species Lists
-                (2026), Geoscience Australia land-area
-                figures, and ABS state boundaries (2021).
+                Sources: EPBC Threatened Species Lists (2026),
+                Geoscience Australia land-area figures,
+                and ABS state boundaries (2021).
                 Taxa can occur in multiple states.
             </p>
 
         </article>
 
 
-        <!-- CHART 5 -->
+        <!-- FIGURE 05 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -467,10 +839,9 @@
             </h3>
 
             <p>
-                This map shows recorded observations of
-                three threatened Australian bird species
+                This map shows recorded observations
+                of three threatened Australian bird species
                 between 2015 and 2025.
-
                 Each hexagon covers a similar geographic area.
                 Darker hexagons represent more
                 recorded observations.
@@ -480,40 +851,36 @@
 
             <p class="hint">
                 Choose a bird species using the dropdown.
-
                 Hover over a hexagon to see the number
                 of observation records.
-
                 Hexagons are approximately 50 km
                 across from corner to corner.
             </p>
 
             <p class="finding">
                 <b>What stands out:</b>
-                The Swift Parrot has more observation records
-                in this dataset than the other two bird species.
-
-                However, more observations do not necessarily
-                mean more birds. Survey effort and repeated
-                sightings can affect the results.
+                Observation hotspots vary between
+                Swift Parrot, Regent Honeyeater and
+                Orange-bellied Parrot.
+                More observations do not necessarily
+                mean more individual birds:
+                survey effort and repeated sightings
+                influence the results.
             </p>
 
             <p class="source">
-                Source: GBIF occurrence records,
-                Australia, 2015–2025.
-
-                Records were filtered for presence,
-                available coordinates and no flagged
-                geospatial issues.
-
-                GBIF download DOIs will be added before
-                final submission.
+                Source: Australian biodiversity occurrence
+                records, 2015–2025, filtered to include
+                georeferenced observations.
+                The map shows recorded observations,
+                not estimated population density.
             </p>
 
         </article>
 
 
-        <!-- CHART 6 -->
+        <!-- FIGURE 06 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -527,10 +894,9 @@
             <p>
                 Protected areas play an important role
                 in conserving Australia's biodiversity.
-
                 This map compares the total protected
-                land area across Australia's states
-                and territories using CAPAD 2024 data.
+                land area across Australia's states and
+                territories using CAPAD 2024 data.
 
                 Larger circles represent more protected land,
                 while darker circles show a higher percentage
@@ -540,40 +906,35 @@
             <div id="chart6" class="chart"></div>
 
             <p class="hint">
-                Hover over a circle to see the protected
-                area in square kilometres and the
-                percentage of land protected.
+                Hover over a circle to see protected land
+                in square kilometres and the percentage
+                of land protected.
 
                 Each circle represents the whole state
-                or territory and does not show the exact
-                location of individual protected areas.
+                or territory, not individual protected-area
+                locations.
             </p>
 
             <p class="finding">
                 <b>What stands out:</b>
                 Western Australia has the largest total
-                protected land area, at approximately 786,742 km².
+                protected land area, at approximately
+                786,742 km².
 
                 However, Tasmania has a greater proportion
-                of its land protected, at 42.8%, compared
+                of land protected, at 42.8%, compared
                 with Western Australia's 31.1%.
-
-                This shows why both total protected area
-                and percentage protected are useful.
             </p>
 
             <p class="source">
                 Source:
-                <a
-                    href="https://www.dcceew.gov.au/environment/land/nrs/science/capad/2024"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://www.dcceew.gov.au/environment/land/nrs/science/capad/2024"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Australian Government, CAPAD 2024
-                </a>,
-                terrestrial protected-area statistics
+                </a>.
+                Terrestrial protected-area statistics
                 by jurisdiction.
-
                 Map boundaries: Australian Bureau
                 of Statistics, 2021.
             </p>
@@ -581,7 +942,8 @@
         </article>
 
 
-        <!-- CHART 7 -->
+        <!-- FIGURE 07 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -589,20 +951,20 @@
             </p>
 
             <h3>
-                Where were larger fire footprints
-                mapped in southeastern Australia?
+                Where were larger fire footprints mapped
+                in southeastern Australia?
             </h3>
 
             <p>
                 The 2019–20 bushfire season placed enormous
                 pressure on Australian ecosystems.
 
-                This map highlights selected larger
-                mapped fire footprints in New South Wales
-                and Victoria during the 2019–20 financial year.
+                This map highlights selected larger mapped
+                fire footprints in New South Wales and Victoria
+                during the 2019–20 financial year.
 
-                Orange areas represent simplified
-                fire boundaries, not fire severity.
+                Orange areas represent simplified fire
+                boundaries, not fire severity.
             </p>
 
             <div id="chart7" class="chart"></div>
@@ -610,7 +972,6 @@
             <p class="hint">
                 Use the dropdown to view both states
                 or select NSW or Victoria individually.
-
                 Hover over the orange areas for details.
             </p>
 
@@ -621,23 +982,20 @@
                 of NSW and Victoria.
 
                 These landscapes support important wildlife
-                habitats, making bushfire exposure a
-                concern for biodiversity conservation.
+                habitats, making bushfire exposure a concern
+                for biodiversity conservation.
             </p>
 
             <p class="source">
                 Source:
-                <a
-                    href="https://data.gov.au/data/dataset/f91c2ffd-a0a0-4042-a8ac-71757a6ef727"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://data.gov.au/data/dataset/f91c2ffd-a0a0-4042-a8ac-71757a6ef727"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Australian Government,
                     2019–20 Financial Year Bushfire Boundaries
                 </a>.
 
                 Selected NSW and Victoria polygons only.
-
                 Smaller source polygons were excluded,
                 and the remaining coverage was merged
                 and approximated using a 3 km grid.
@@ -651,15 +1009,12 @@
     </section>
 
 
+    <!-- ==========================================
+         ENVIRONMENTAL PRESSURES PHOTO GALLERY
+         ========================================== -->
 
-    <!-- ========================================
-         CHAPTER 3 PHOTO GALLERY
-         ======================================== -->
-
-    <section
-        class="threat-gallery"
-        aria-labelledby="threat-gallery-heading"
-    >
+    <section class="threat-gallery"
+             aria-labelledby="threat-gallery-heading">
 
         <p class="label">
             FROM THE FIELD / ENVIRONMENTAL PRESSURES
@@ -670,23 +1025,19 @@
         </h2>
 
         <p>
-            The numbers tell us how many species
-            face each threat.
-
-            These photographs illustrate three
-            environmental pressures found in
+            The numbers tell us how many species face
+            each threat. These photographs illustrate
+            three environmental pressures found in
             Australia's wildlife threat assessments.
         </p>
 
-
         <div class="threat-grid">
 
-            <!-- Habitat loss -->
             <figure class="threat-card">
 
                 <img
-                    src="images/ch3/habitat-loss.jpg"
-                    alt="Australian bushland cleared for agriculture"
+                    src="images/habitat-loss.jpg"
+                    alt="Australian landscape cleared of native vegetation"
                     loading="lazy"
                 >
 
@@ -695,17 +1046,15 @@
                     <strong>01 / Habitat loss</strong>
 
                     <span>
-                        Land clearing can reduce
-                        and fragment wildlife habitat.
+                        Land clearing can reduce and
+                        fragment wildlife habitat.
                     </span>
 
                     <small>
                         Photo: John Coppi / CSIRO, 1992.
-                        <a
-                            href="https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_3926_Area_cleared_of_Mallee_bushland_for_grazing_and_cropping_on_the_Cooke_Plains_southeast_of_Tailem_Bend_SA_1992.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_3926_Area_cleared_of_Mallee_bushland_for_grazing_and_cropping_on_the_Cooke_Plains_southeast_of_Tailem_Bend_SA_1992.jpg"
+                           target="_blank"
+                           rel="noopener noreferrer">
                             CC BY 3.0
                         </a>
                     </small>
@@ -715,12 +1064,11 @@
             </figure>
 
 
-            <!-- Invasive species -->
             <figure class="threat-card">
 
                 <img
-                    src="images/ch3/invasive-fox.jpg"
-                    alt="Red fox in Victoria, Australia"
+                    src="images/invasive-fox.jpg"
+                    alt="Red fox in a forested area of Victoria, Australia"
                     loading="lazy"
                 >
 
@@ -729,17 +1077,15 @@
                     <strong>02 / Invasive species</strong>
 
                     <span>
-                        Introduced predators can
-                        threaten native animals.
+                        Introduced predators can threaten
+                        native Australian animals.
                     </span>
 
                     <small>
                         Photo: Shylu007, Victoria, 2019.
-                        <a
-                            href="https://commons.wikimedia.org/wiki/File:Red_fox_in_Great_Otway_National_Park_in_Victoria_(Australia)_in_2019_(no_watermark).jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://commons.wikimedia.org/wiki/File:Red_fox_in_Great_Otway_National_Park_in_Victoria_(Australia)_in_2019_(no_watermark).jpg"
+                           target="_blank"
+                           rel="noopener noreferrer">
                             CC BY-SA 4.0
                         </a>
                     </small>
@@ -749,12 +1095,11 @@
             </figure>
 
 
-            <!-- Bushfires -->
             <figure class="threat-card">
 
                 <img
-                    src="images/ch3/bushfire.jpg"
-                    alt="Burned bushland in New South Wales"
+                    src="images/bushfire.jpg"
+                    alt="Burnt Australian bushland in New South Wales"
                     loading="lazy"
                 >
 
@@ -763,18 +1108,16 @@
                     <strong>03 / Bushfires</strong>
 
                     <span>
-                        Fire can change habitats
-                        and place threatened wildlife
-                        under additional pressure.
+                        Fire can alter ecosystems and
+                        place additional pressure on
+                        threatened wildlife.
                     </span>
 
                     <small>
                         Photo: Tatters, NSW, 2019.
-                        <a
-                            href="https://commons.wikimedia.org/wiki/File:Burnt_(49041271591).jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="https://commons.wikimedia.org/wiki/File:Burnt_(49041271591).jpg"
+                           target="_blank"
+                           rel="noopener noreferrer">
                             CC BY-SA 2.0
                         </a>
                     </small>
@@ -788,10 +1131,9 @@
     </section>
 
 
-
-    <!-- ========================================
+    <!-- ==========================================
          CHAPTER 3: THE THREATS
-         ======================================== -->
+         ========================================== -->
 
     <section id="threats" class="chapter">
 
@@ -811,7 +1153,8 @@
         </p>
 
 
-        <!-- CHART 8 -->
+        <!-- FIGURE 08 -->
+
         <article class="chart-section">
 
             <p class="label">
@@ -838,7 +1181,6 @@
             <p class="hint">
                 Hover over each cell to see the number
                 of affected taxa and the total assessed.
-
                 A taxon can face multiple threats,
                 so the percentages do not add up to 100%.
             </p>
@@ -846,57 +1188,43 @@
             <p class="finding">
                 <b>What stands out:</b>
                 Invasive species and diseases affect
-                80.4% of the assessed mammal taxa.
+                80.4% of assessed mammal taxa.
 
                 Habitat loss is recorded for 74.5%
                 of assessed fish taxa, while changed
                 water regimes affect 62.7%.
-
-                The pattern of threats differs across groups.
             </p>
 
             <p class="source">
                 Source:
-                <a
-                    href="https://doi.org/10.1002/ece3.7920"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a href="https://doi.org/10.1002/ece3.7920"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     Ward et al. (2021)
-                </a>,
-                A national-scale dataset for threats
-                impacting Australia's imperilled
-                flora and fauna.
+                </a>.
 
-                Data reflect earlier threat assessments,
-                including EPBC status information from 2018.
+                Data reflect the study's earlier threat
+                assessments, including EPBC status
+                information from 2018.
 
                 Only fauna were included.
-
-                Percentages use the number of assessed taxa
-                within each animal group.
+                Percentages use the number of assessed
+                taxa within each animal group.
             </p>
 
         </article>
 
 
+        <!-- FIGURE 09 -->
 
-        <!-- ====================================
-             CHART 9: UPSET PLOT
-             ==================================== -->
-
-        <article
-            class="chart-section"
-            id="threat-intersections"
-        >
+        <article class="chart-section"
+                 id="threat-intersections">
 
             <p class="label">
                 FIGURE 09 / OVERLAPPING THREATS
             </p>
 
-            <h3>
-                Wildlife rarely faces just one threat
-            </h3>
+            <h3>Wildlife rarely faces just one threat</h3>
 
             <p class="viz9-intro">
                 Habitat loss, invasive species, fire
@@ -904,14 +1232,10 @@
                 the same animal.
 
                 This chart shows the most common
-                <strong>
-                    combinations of five selected threats
-                </strong>
+                <strong>combinations of five selected threats</strong>
                 recorded for Australia's imperilled fauna.
             </p>
 
-
-            <!-- CHART 9 SUMMARY CARDS -->
             <div class="viz9-stats">
 
                 <div class="viz9-stat featured">
@@ -926,7 +1250,6 @@
 
                 </div>
 
-
                 <div class="viz9-stat">
 
                     <strong>335 / 456</strong>
@@ -938,46 +1261,35 @@
 
                 </div>
 
-
                 <div class="viz9-stat">
 
                     <strong>25 profiles</strong>
 
                     <span>
-                        Different non-empty threat combinations
-                        occurred. The chart displays the 12
-                        most frequent.
+                        Different non-empty combinations
+                        occurred. The chart shows the
+                        12 most frequent.
                     </span>
 
                 </div>
 
             </div>
 
-
-            <!-- READING INSTRUCTIONS -->
             <p class="viz9-explainer">
-
                 <strong>How to read:</strong>
+                Each numbered column represents one exact
+                combination among the five threats shown.
 
-                Each numbered column represents one
-                exact combination among the five threats shown.
-
-                The bar above counts the taxa with
-                that combination.
-
-                Filled dots indicate which threats
-                occur together, and the connecting
-                line links those threats.
-
+                The bar above counts the taxa with that
+                combination. Filled dots indicate threats
+                recorded together, and connecting lines
+                link them.
             </p>
 
-
-            <!-- CHART 9 CONTAINER -->
             <div id="chart9" class="chart"></div>
 
-
-            <!-- DOT LEGEND -->
-            <div class="viz9-key">
+            <div class="viz9-key"
+                 aria-label="Threat intersection legend">
 
                 <span>
                     <span class="viz9-dot on"></span>
@@ -991,20 +1303,15 @@
 
             </div>
 
-
             <p class="hint">
                 Hover over the bars or dots for the
                 exact combination and number of taxa.
-
-                Threat categories not shown here can
-                still affect these animals.
+                Categories not shown here can still
+                affect these animals.
             </p>
 
-
             <p class="finding">
-
                 <b>What stands out:</b>
-
                 The most frequent profile includes
                 <strong>
                     habitat loss, invasive species/disease
@@ -1012,222 +1319,890 @@
                 </strong>
                 (64 taxa).
 
-                These results show why protecting wildlife
-                often requires addressing several
-                environmental pressures at once.
-
+                Conservation often requires addressing
+                several environmental pressures at once.
             </p>
 
-
             <p class="source">
-
-                Source: Ward et al. (2021),
-
-                <a
-                    href="https://doi.org/10.1002/ece3.7920"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    A national-scale dataset for threats
-                    impacting Australia's imperilled
-                    flora and fauna
-                </a>
-                (supplementary species-threat matrix).
+                Source:
+                <a href="https://doi.org/10.1002/ece3.7920"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Ward et al. (2021)
+                </a>,
+                supplementary species-threat assessment matrix.
 
                 Based on 456 unique assessed fauna taxa.
+                Five of the eight broad threat categories
+                are analysed. Only the 12 largest
+                of 25 observed non-empty combinations
+                are plotted (365 taxa).
 
-                Five of eight broad threat categories
-                are analysed here.
-
-                The chart displays the 12 largest of
-                25 observed non-empty combinations,
-                covering 365 taxa.
-
-                A combination is exact only among these
-                five categories and does not exclude
-                additional threats outside them.
-
-                Each taxon is counted once.
-
+                Combinations are exact only among these
+                five selected threats.
             </p>
 
         </article>
 
 
-        
-<!-- CHART 10: MULTIPLE THREAT PRESSURES -->
-<article class="chart-section" id="multiple-threats">
+        <!-- FIGURE 10 -->
 
-    <p class="label">
-        FIGURE 10 / COMPOUND PRESSURES
-    </p>
+        <article class="chart-section">
 
-    <h3>
-        Nearly three in four assessed fauna taxa
-        face multiple threats
-    </h3>
-
-    <p>
-        Environmental pressures rarely occur in isolation.
-
-        This waffle chart shows how many of five
-        selected threat categories were recorded
-        for each of 456 assessed Australian fauna taxa.
-
-        Every square represents approximately 1%
-        of the assessed taxa.
-    </p>
-
-    <div class="viz10-layout">
-
-        <!-- Vega-Lite waffle chart -->
-        <div id="chart10" class="chart viz10-chart"></div>
-
-        <!-- Statistics and colour explanation -->
-        <aside class="viz10-panel">
-
-            <p class="viz10-kicker">
-                THE BIG PICTURE
+            <p class="label">
+                FIGURE 10 / COMPOUND PRESSURES
             </p>
 
-            <div class="viz10-number">
-                73.5%
+            <h3>
+                Nearly three in four assessed fauna taxa
+                face multiple threats
+            </h3>
+
+            <p>
+                Environmental pressures rarely occur
+                in isolation.
+
+                This waffle chart shows how many of
+                five selected threat categories were
+                recorded for each of 456 assessed
+                Australian fauna taxa.
+
+                Every square represents approximately
+                1% of assessed taxa.
+            </p>
+
+            <div class="viz10-layout">
+
+                <div class="viz10-main">
+
+                    <div id="chart10" class="chart"></div>
+
+                </div>
+
+                <aside class="viz10-side">
+
+                    <p class="viz10-kicker">
+                        THE BIG PICTURE
+                    </p>
+
+                    <strong class="viz10-big">
+                        73.5%
+                    </strong>
+
+                    <p>
+                        <strong>335 of 456 taxa</strong>
+                        have at least two of the five
+                        selected threats recorded.
+                    </p>
+
+                    <div class="viz10-breakdown">
+
+                        <p class="viz10-breakdown-title">
+                            NUMBER OF SELECTED THREATS
+                        </p>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#E4E9E3"></span>
+
+                            <div>
+                                <strong>0 selected</strong>
+                                <small>23 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">5.0%</span>
+
+                        </div>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#B8D0C1"></span>
+
+                            <div>
+                                <strong>1 threat</strong>
+                                <small>98 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">21.5%</span>
+
+                        </div>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#658F7D"></span>
+
+                            <div>
+                                <strong>2 threats</strong>
+                                <small>122 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">26.8%</span>
+
+                        </div>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#D18E6C"></span>
+
+                            <div>
+                                <strong>3 threats</strong>
+                                <small>149 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">32.7%</span>
+
+                        </div>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#AB4F40"></span>
+
+                            <div>
+                                <strong>4 threats</strong>
+                                <small>59 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">12.9%</span>
+
+                        </div>
+
+                        <div class="viz10-breakdown-row">
+
+                            <span class="viz10-swatch"
+                                  style="background:#633949"></span>
+
+                            <div>
+                                <strong>5 threats</strong>
+                                <small>5 taxa</small>
+                            </div>
+
+                            <span class="viz10-percent">1.1%</span>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
             </div>
 
-            <p class="viz10-summary">
-                <strong>335 of 456 taxa</strong>
-                have at least two of the five
-                selected threats recorded.
+            <p class="hint">
+                Hover over a square to see the exact
+                number and percentage of taxa.
+
+                Squares are rounded to approximately
+                1% each, so visualised square counts
+                are approximate.
             </p>
 
-            <p class="viz10-key-heading">
-                NUMBER OF SELECTED THREATS
+            <p class="finding">
+                <b>What stands out:</b>
+                About 73.5% of the assessed fauna taxa
+                face two or more selected threats.
+
+                Almost half (46.7%) face at least three.
+
+                This highlights the need to address
+                multiple environmental pressures rather
+                than focusing on a single threat.
             </p>
 
-            <div class="viz10-key">
+            <p class="source">
+                Source:
+                <a href="https://doi.org/10.1002/ece3.7920"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Ward et al. (2021)
+                </a>,
+                supplementary species-threat assessment data.
 
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z0"></span>
-                    <span class="viz10-key-text">
-                        <strong>0 selected</strong>
-                        <small>23 taxa</small>
-                    </span>
-                    <b>5.0%</b>
-                </div>
+                Analysis includes 456 unique fauna taxa.
+                Only five of eight broad threat categories
+                are counted here.
 
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z1"></span>
-                    <span class="viz10-key-text">
-                        <strong>1 threat</strong>
-                        <small>98 taxa</small>
-                    </span>
-                    <b>21.5%</b>
-                </div>
+                A value of zero means none of these five
+                categories were recorded, not that the taxon
+                faces no threats.
 
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z2"></span>
-                    <span class="viz10-key-text">
-                        <strong>2 threats</strong>
-                        <small>122 taxa</small>
-                    </span>
-                    <b>26.8%</b>
-                </div>
+                The number of recorded threat categories
+                does not measure their severity.
+            </p>
 
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z3"></span>
-                    <span class="viz10-key-text">
-                        <strong>3 threats</strong>
-                        <small>149 taxa</small>
-                    </span>
-                    <b>32.7%</b>
-                </div>
-
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z4"></span>
-                    <span class="viz10-key-text">
-                        <strong>4 threats</strong>
-                        <small>59 taxa</small>
-                    </span>
-                    <b>12.9%</b>
-                </div>
-
-                <div class="viz10-key-row">
-                    <span class="viz10-swatch z5"></span>
-                    <span class="viz10-key-text">
-                        <strong>5 threats</strong>
-                        <small>5 taxa</small>
-                    </span>
-                    <b>1.1%</b>
-                </div>
-
-            </div>
-
-        </aside>
-
-    </div>
-
-    <p class="hint">
-        Hover over a square to see the exact
-        number and percentage of taxa.
-
-        Squares are rounded to approximately 1%
-        each, so the visualised square counts
-        are approximate.
-    </p>
-
-    <p class="finding">
-        <b>What stands out:</b>
-
-        About 73.5% of the assessed fauna taxa
-        face two or more of the five selected threats.
-
-        Almost half (46.7%) face at least three.
-
-        This highlights the importance of addressing
-        multiple environmental pressures rather
-        than focusing on a single threat.
-    </p>
-
-    <p class="source">
-        Source:
-        <a href="https://doi.org/10.1002/ece3.7920"
-           target="_blank" rel="noopener noreferrer">
-            Ward et al. (2021)
-        </a>,
-        supplementary species-threat assessment dataset.
-
-        Analysis includes 456 unique fauna taxa.
-
-        The five categories are habitat loss,
-        invasive species and disease, adverse fire
-        regimes, climate change and severe weather,
-        and changed water regimes.
-
-        Only five of the eight broad categories
-        are counted here.
-
-        A value of zero means none of these
-        five categories were recorded. It does
-        not mean the animal faces no threats.
-
-        The number of recorded threat categories
-        does not measure their severity.
-    </p>
-
-</article>
-
+        </article>
 
     </section>
 
 
+    <!-- ==========================================
+         CHAPTER 4: THE FUTURE
+         ========================================== -->
 
-    <!-- ========================================
+    <section id="future" class="chapter">
+
+        <p class="label">
+            CHAPTER 04 / THE FUTURE
+        </p>
+
+        <h2>Can conservation turn the tide?</h2>
+
+        <p class="chapter-intro">
+            The scale of biodiversity loss is serious,
+            but conservation action can make a difference.
+
+            Understanding population trends, protected areas
+            and conservation targets helps show how much
+            progress has been made and what remains to be done.
+        </p>
+
+
+        <!-- CONSERVATION PHOTOGRAPHS -->
+
+        <section class="future-gallery"
+                 aria-labelledby="future-gallery-heading">
+
+            <p class="label">
+                FROM THE FIELD / CONSERVATION IN ACTION
+            </p>
+
+            <h2 id="future-gallery-heading">
+                Protecting habitats and supporting recovery
+            </h2>
+
+            <p>
+                Conservation involves both restoring ecosystems
+                and helping threatened animal populations recover.
+            </p>
+
+            <div class="future-grid">
+
+                <figure class="future-card">
+
+                    <img
+                        src="images/habitat-restoration.jpg"
+                        alt="Wetland restoration landscape in Australia"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <p class="label">
+                            CONSERVATION / 01
+                        </p>
+
+                        <h3>Restoring habitats</h3>
+
+                        <span>
+                            Wetlands and other ecosystems
+                            provide important habitat for
+                            Australia's native wildlife.
+
+                            Restoration can help recover
+                            some ecological functions lost
+                            through environmental change.
+                        </span>
+
+                        <small>
+                            Photograph: Nick Carson.
+                            Wikimedia Commons, public domain.
+                        </small>
+
+                    </figcaption>
+
+                </figure>
+
+
+                <figure class="future-card">
+
+                    <img
+                        src="images/species-recovery.jpg"
+                        alt="Helmeted Honeyeater at Healesville Sanctuary"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        <p class="label">
+                            CONSERVATION / 02
+                        </p>
+
+                        <h3>Supporting species recovery</h3>
+
+                        <span>
+                            The Helmeted Honeyeater is
+                            an example of a threatened
+                            Australian bird supported through
+                            captive breeding and reintroduction.
+
+                            Such programmes aim to strengthen
+                            vulnerable populations.
+                        </span>
+
+                        <small>
+                            Photograph: Dylan Sanusi-Goh.
+                            Wikimedia Commons, CC BY 4.0.
+                        </small>
+
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- FIGURE 11 -->
+
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 11 / TRACKING WILDLIFE POPULATIONS
+            </p>
+
+            <h3>
+                Four animal groups. Four decades of change.
+            </h3>
+
+            <p>
+                The Threatened Species Index tracks changes
+                in the relative abundance of monitored
+                threatened and near-threatened wildlife
+                populations.
+
+                These four panels compare birds, mammals,
+                reptiles and amphibians from 1985 to 2022.
+
+                All groups begin with an index of 100,
+                making their long-term changes easier
+                to compare.
+            </p>
+
+            <div class="viz11-guide"
+                 aria-label="Population chart legend">
+
+                <span>
+                    <span style="
+                        display:inline-block;
+                        width:24px;
+                        height:3px;
+                        background:#467E68;
+                        border-radius:3px;">
+                    </span>
+                    Population index
+                </span>
+
+                <span>
+                    <span style="
+                        display:inline-block;
+                        width:24px;
+                        height:10px;
+                        background:#B7D8CB;
+                        border-radius:3px;">
+                    </span>
+                    Lower and upper estimates
+                </span>
+
+                <span>
+                    <span style="
+                        display:inline-block;
+                        width:25px;
+                        border-top:2px dashed #9CB5A5;">
+                    </span>
+                    1985 baseline = 100
+                </span>
+
+            </div>
+
+            <div id="chart11" class="chart"></div>
+
+            <div class="viz11-insights">
+
+                <div class="viz11-insight"
+                     style="--group-color:#47836D">
+
+                    <small>Birds</small>
+                    <strong>-56%</strong>
+                    <span>Approximate index change since 1985</span>
+
+                </div>
+
+                <div class="viz11-insight"
+                     style="--group-color:#B85F43">
+
+                    <small>Mammals</small>
+                    <strong>-38%</strong>
+                    <span>Approximate index change since 1985</span>
+
+                </div>
+
+                <div class="viz11-insight"
+                     style="--group-color:#839665">
+
+                    <small>Reptiles</small>
+                    <strong>-94%</strong>
+                    <span>Pilot index; interim results</span>
+
+                </div>
+
+                <div class="viz11-insight"
+                     style="--group-color:#806C96">
+
+                    <small>Amphibians</small>
+                    <strong>-97%</strong>
+                    <span>Approximate index change since 1985</span>
+
+                </div>
+
+            </div>
+
+            <p class="viz11-note">
+                <strong>Reading the index:</strong>
+                The value 100 represents the 1985 baseline.
+
+                A value of 50 means the monitored group
+                has approximately half its baseline relative
+                abundance.
+
+                These are indices, not actual counts
+                of individual animals.
+            </p>
+
+            <p class="hint">
+                Hover along the coloured lines to see
+                each year's population index and its
+                lower and upper estimates.
+
+                All four panels use the same vertical
+                scale for easier comparison.
+            </p>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                All four monitored fauna groups show
+                substantial long-term declines.
+
+                The declines are particularly severe
+                in the amphibian and pilot reptile
+                indices, while the mammal index
+                shows a smaller overall decline.
+            </p>
+
+            <p class="source">
+                Source: Threatened Species Index,
+                TSX 2025 exports for Birds, Mammals,
+                Reptiles and Amphibians.
+
+                Indices cover monitored populations,
+                not every species or individual animal
+                in Australia.
+
+                Reptile results come from a pilot index
+                and should be interpreted cautiously.
+            </p>
+
+        </article>
+
+
+        <!-- FIGURE 12 -->
+
+        <article class="chart-section">
+
+            <p class="label">
+                FIGURE 12 / CONSERVATION PROGRESS
+            </p>
+
+            <h3>
+                Australia's protected land has more
+                than doubled since 2004
+            </h3>
+
+            <p>
+                Australia's protected-area network
+                has grown substantially over the
+                past two decades.
+
+                This chart tracks the share of
+                Australia's landmass covered by
+                terrestrial protected areas between
+                2004 and 2024, using historical CAPAD
+                reporting data.
+
+                The lower panel shows how much the
+                protected share increased between reports.
+            </p>
+
+            <div class="viz12-stats">
+
+                <div class="viz12-stat">
+
+                    <small>2004 / STARTING POINT</small>
+
+                    <strong>10.52%</strong>
+
+                    <span>Australian landmass protected</span>
+
+                </div>
+
+                <div class="viz12-stat">
+
+                    <small>2024 / LATEST CAPAD SNAPSHOT</small>
+
+                    <strong>22.57%</strong>
+
+                    <span>Australian landmass protected</span>
+
+                </div>
+
+                <div class="viz12-stat accent">
+
+                    <small>20-YEAR INCREASE</small>
+
+                    <strong>+12.05 pp</strong>
+
+                    <span>Percentage-point growth</span>
+
+                </div>
+
+            </div>
+
+            <div id="chart12"
+                 class="chart viz12-chart"></div>
+
+            <div class="viz12-guide">
+
+                <span>
+                    <span style="
+                        width:24px;
+                        height:3px;
+                        display:inline-block;
+                        background:#386F59;">
+                    </span>
+                    Protected land coverage
+                </span>
+
+                <span>
+                    <span style="
+                        width:12px;
+                        height:12px;
+                        display:inline-block;
+                        border-radius:50%;
+                        background:#386F59;
+                        border:2px solid white;
+                        outline:1px solid #386F59;">
+                    </span>
+                    Reporting snapshot
+                </span>
+
+                <span>
+                    <span style="
+                        width:12px;
+                        height:12px;
+                        display:inline-block;
+                        background:#B85F43;
+                        border-radius:2px;">
+                    </span>
+                    Larger increases between reports
+                </span>
+
+            </div>
+
+            <p class="hint">
+                Hover over the dots in the upper chart
+                to inspect the percentage protected
+                in each reporting year.
+
+                Hover over the bars below to see
+                the change in percentage points.
+
+                Only reporting years are observed.
+                Lines between years are visual guides,
+                not annual measurements.
+            </p>
+
+            <div class="viz12-context">
+
+                <p class="label">
+                    A CONTRIBUTOR TO CONSERVATION GROWTH
+                </p>
+
+                <h4>
+                    Indigenous Protected Areas have played
+                    an important role
+                </h4>
+
+                <p>
+                    According to Australian Bureau of Statistics
+                    reporting, Indigenous Protected Areas expanded
+                    from approximately 2% of Australia's landmass
+                    in 2004 to around 11% in 2024.
+
+                    These areas are managed by Aboriginal
+                    and Torres Strait Islander groups in
+                    accordance with Traditional Owners' objectives.
+                </p>
+
+            </div>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                Australia's terrestrial protected-area share
+                increased from 10.52% in 2004
+                to 22.57% in 2024.
+
+                This represents a gain of 12.05
+                percentage points over two decades.
+            </p>
+
+            <p class="source">
+                Sources: Australian Government,
+                historical Collaborative Australian Protected
+                Areas Database (CAPAD) reporting,
+                2004–2024.
+
+                Indigenous Protected Area context:
+                Australian Bureau of Statistics.
+
+                Reporting years are snapshots,
+                not a continuous annual data series.
+            </p>
+
+        </article>
+
+
+        <!-- ==========================================
+             FIGURE 13: FINAL CONSERVATION TARGET
+             ========================================== -->
+
+        <article class="chart-section"
+                 id="conservation-target">
+
+            <p class="label">
+                FIGURE 13 / TOWARDS 30%
+            </p>
+
+            <h3>
+                Australia is closer to 30% protected land,
+                but a gap remains
+            </h3>
+
+            <p>
+                Protecting land is one important part
+                of biodiversity conservation.
+
+                This final visualisation compares Australia's
+                2024 terrestrial protected-land share
+                with a 30% conservation benchmark for 2030.
+
+                It also compares the average historical
+                rate of expansion with the average rate
+                that would be needed to reach that benchmark.
+            </p>
+
+            <div class="viz13-stats">
+
+                <div class="viz13-stat">
+
+                    <small>PROTECTED LAND / 2024</small>
+
+                    <strong>22.57%</strong>
+
+                    <span>Recorded terrestrial protection</span>
+
+                </div>
+
+                <div class="viz13-stat">
+
+                    <small>2030 BENCHMARK</small>
+
+                    <strong>30%</strong>
+
+                    <span>Reference conservation target</span>
+
+                </div>
+
+                <div class="viz13-stat accent">
+
+                    <small>REMAINING GAP</small>
+
+                    <strong>7.43 pp</strong>
+
+                    <span>Additional percentage points needed</span>
+
+                </div>
+
+            </div>
+
+            <div id="chart13" class="chart"></div>
+
+            <div class="viz13-guide">
+
+                <span>
+                    <span style="
+                        width:14px;
+                        height:14px;
+                        border-radius:3px;
+                        background:#6F9B88;
+                        display:inline-block;">
+                    </span>
+                    Protected share / historical pace
+                </span>
+
+                <span>
+                    <span style="
+                        width:14px;
+                        height:14px;
+                        border-radius:3px;
+                        background:#D68F68;
+                        display:inline-block;">
+                    </span>
+                    Remaining gap / required pace
+                </span>
+
+            </div>
+
+            <p class="hint">
+                The upper chart shows the protected share
+                and the remaining gap to 30%.
+
+                The lower chart compares two average
+                annual percentage-point increases.
+
+                Hover over the bars for further detail.
+            </p>
+
+            <div class="viz13-summary">
+
+                <strong>The challenge:</strong>
+                Australia had protected 22.57% of its
+                landmass by 2024, leaving a gap
+                of 7.43 percentage points to reach 30%.
+
+                Reaching this benchmark by 2030
+                would require an average increase
+                of approximately 1.24 percentage points
+                per year from the 2024 level.
+
+                That is about twice the average annual
+                increase recorded between 2004 and 2024.
+            </div>
+
+            <p class="finding">
+                <b>What stands out:</b>
+                Protected-area coverage has grown,
+                but meeting a 30% benchmark would
+                require faster expansion than the
+                average pace of the previous two decades.
+
+                Protecting land is important,
+                but the ecological quality, location
+                and management of protected areas
+                also matter for wildlife recovery.
+            </p>
+
+            <p class="source">
+                Sources: CAPAD historical protected-area
+                reporting (2004–2024), as analysed
+                in Figure 12.
+
+                Calculations:
+                30.00 - 22.57 = 7.43 percentage points;
+                7.43 / 6 = approximately 1.24
+                percentage points per year.
+
+                The comparison is illustrative:
+                it is not a forecast of future
+                protected-area growth.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         CLOSING MESSAGE
+         ========================================== -->
+
+    <section class="final-message">
+
+        <p class="label">
+            THE STORY DOES NOT END HERE
+        </p>
+
+        <h2>
+            Protecting wildlife means protecting
+            the places and systems that sustain it.
+        </h2>
+
+        <p>
+            Australia's threatened wildlife faces
+            overlapping environmental pressures
+            and substantial population declines.
+
+            Expanding protected areas is part
+            of the response, but effective conservation
+            also depends on habitat quality,
+            managing threats, long-term monitoring
+            and supporting species recovery.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         DATA AND METHODOLOGY NOTE
+         ========================================== -->
+
+    <section class="method-note"
+             aria-label="Data and methodology">
+
+        <p class="label">
+            ABOUT THE DATA
+        </p>
+
+        <p>
+            This visualisation combines data from
+            Australian EPBC threatened species lists,
+            the Threatened Species Index,
+            biodiversity observation records,
+            the CAPAD protected-area database,
+            national bushfire boundaries and
+            Ward et al. (2021).
+
+            Different charts use different reporting
+            periods, definitions and populations.
+            Values should not be interpreted
+            as measurements of the same sample.
+        </p>
+
+        <p>
+            Counts of threatened taxa do not represent
+            individual animals. Occurrence records
+            reflect recorded sightings and can be
+            influenced by survey effort. Threat categories
+            can overlap. Population indices measure
+            relative changes in monitored populations.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
          FOOTER
-         ======================================== -->
+         ========================================== -->
 
     <footer>
 
         <h3>Australia's Vanishing Wildlife</h3>
+
+        <p>
+            An interactive wildlife data field guide.
+        </p>
 
         <p>
             FIT3179 Data Visualisation 2 ·
@@ -1235,7 +2210,17 @@
         </p>
 
         <p class="small">
-            Working version · October 2026
+            October 2026 ·
+            Built with Vega-Lite and JavaScript
+        </p>
+
+        <p class="small">
+            Data sources and photographic attributions
+            are identified alongside the relevant figures.
+        </p>
+
+        <p class="small">
+            <a href="#crisis">Back to the beginning ↑</a>
         </p>
 
     </footer>
@@ -1243,7 +2228,9 @@
 </main>
 
 
-<!-- VEGA-LITE LIBRARIES -->
+<!-- ==========================================
+     VEGA LIBRARIES
+     ========================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 
@@ -1252,8 +2239,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
 
-<!-- MAIN JAVASCRIPT -->
-<script src="script.js?v=10"></script>
+<!-- Loads Charts 1–13 from their JSON specifications -->
+<script src="script.js"></script>
 
 </body>
 </html>
