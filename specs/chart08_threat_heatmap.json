@@ -1,18 +1,36 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Threat percentages across six Australian fauna groups.",
 
-  "background": "white",
+  "description": "Eucalyptus-green heatmap of recorded threats on assessed Australian fauna.",
 
-  "width": 660,
-  "height": 340,
+  "background": "#FFFFFF",
+
+  "width": 820,
+  "height": 355,
 
   "padding": {
-    "left": 125,
+    "left": 15,
     "right": 20,
-    "top": 15,
-    "bottom": 80
+    "top": 12,
+    "bottom": 18
+  },
+
+  "title": {
+    "text": "The wildlife threat fingerprint",
+    "subtitle": [
+      "Each cell shows the share of assessed taxa affected by a threat.",
+      "Darker eucalyptus-green tiles indicate higher percentages."
+    ],
+    "anchor": "start",
+    "font": "Fraunces",
+    "fontSize": 22,
+    "fontWeight": 600,
+    "color": "#234B3E",
+    "subtitleFont": "Source Sans 3",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#667E70",
+    "offset": 22
   },
 
   "data": {
@@ -28,30 +46,36 @@
   },
 
   "encoding": {
-    "x": {
-      "field": "threat",
-      "type": "nominal",
-      "sort": [
-        "Habitat loss",
-        "Invasives & disease",
-        "Fire regimes",
-        "Climate & weather",
-        "Water changes",
-        "Ecosystem disruption",
-        "Direct human harm",
-        "Pollution"
-      ],
-
-      "axis": {
-        "title": null,
-        "labelAngle": -36,
-        "labelFont": "Source Sans 3",
-        "labelFontSize": 12,
-        "labelColor": "#354C42",
-        "labelLimit": 180,
-        "labelPadding": 10
-      }
-    },
+"x": {
+  "field": "threat",
+  "type": "nominal",
+  "sort": [
+    "Habitat loss",
+    "Invasives & disease",
+    "Fire regimes",
+    "Climate & weather",
+    "Water changes",
+    "Ecosystem disruption",
+    "Direct human harm",
+    "Pollution"
+  ],
+  "scale": {
+    "paddingInner": 0.035,
+    "paddingOuter": 0.015
+  },
+  "axis": {
+    "title": null,
+    "labelAngle": -32,
+    "labelFontSize": 13,
+    "labelColor": "#365B4C",
+    "labelFontWeight": 600,
+    "labelLimit": 1000,
+    "labelPadding": 14,
+    "labelOverlap": false,
+    "ticks": false,
+    "domain": false
+  }
+},
 
     "y": {
       "field": "group",
@@ -64,14 +88,16 @@
         "Fish",
         "Invertebrates"
       ],
-
+      "scale": {
+        "paddingInner": 0.035,
+        "paddingOuter": 0.015
+      },
       "axis": {
         "title": null,
-        "labelFont": "Source Sans 3",
-        "labelFontSize": 13,
-        "labelColor": "#354C42",
-        "labelPadding": 10,
-        "labelLimit": 180,
+        "labelFontSize": 14,
+        "labelColor": "#284F3D",
+        "labelFontWeight": 600,
+        "labelPadding": 14,
         "ticks": false,
         "domain": false
       }
@@ -103,7 +129,7 @@
       {
         "field": "percent",
         "type": "quantitative",
-        "title": "Share affected (%)",
+        "title": "Affected (%)",
         "format": ".1f"
       }
     ]
@@ -113,29 +139,40 @@
     {
       "mark": {
         "type": "rect",
+        "cornerRadius": 6,
         "stroke": "#FFFFFF",
-        "strokeWidth": 3,
-        "cornerRadius": 3
+        "strokeWidth": 3
       },
 
       "encoding": {
         "color": {
           "field": "percent",
           "type": "quantitative",
-
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              25,
+              50,
+              75,
+              100
+            ],
             "range": [
-              "#ECF1E8",
-              "#215A45"
+              "#EDF2EA",
+              "#C5D7C8",
+              "#91AF99",
+              "#56836B",
+              "#285540"
             ]
           },
-
           "legend": {
             "title": "Taxa affected (%)",
             "orient": "bottom",
-            "gradientLength": 230,
-            "labelFontSize": 11
+            "direction": "horizontal",
+            "gradientLength": 360,
+            "gradientThickness": 16,
+            "labelFontSize": 12,
+            "titleFontSize": 13,
+            "titlePadding": 12
           }
         }
       }
@@ -145,7 +182,7 @@
       "mark": {
         "type": "text",
         "font": "Source Sans 3",
-        "fontSize": 12,
+        "fontSize": 15,
         "fontWeight": "bold"
       },
 
@@ -154,13 +191,12 @@
           "field": "label",
           "type": "nominal"
         },
-
         "color": {
           "condition": {
-            "test": "datum.percent >= 50",
+            "test": "datum.percent >= 60",
             "value": "#FFFFFF"
           },
-          "value": "#274036"
+          "value": "#254538"
         }
       }
     }
@@ -168,8 +204,21 @@
 
   "config": {
     "font": "Source Sans 3",
+
     "view": {
       "stroke": null
+    },
+
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
+    },
+
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelColor": "#5A7765",
+      "titleColor": "#234B3E"
     }
   }
 }
