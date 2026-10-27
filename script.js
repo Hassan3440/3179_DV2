@@ -1606,7 +1606,7 @@ function installMetadata() {
 
       <div class="fg-meta-cell">
         <b>Unit</b>
-        <span>FIT3179 Data Visualisation 2</span>
+        <span>FIT3179 Data Visualisation </span>
       </div>
 
       <div class="fg-meta-cell">
